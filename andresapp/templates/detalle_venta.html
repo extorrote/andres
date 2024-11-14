@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Propiedad</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Compra, venta, alquiler y preventas de propiedades en Puerto Vallarta. Ofrecemos terrenos, casas, departamentos y más. Encuentra tu hogar ideal en el paraíso.">
+    <meta name="keywords" content="casas en venta, terrenos en Puerto Vallarta, departamentos en renta, preventas en Puerto Vallarta, compra venta de propiedades, bienes raíces en Puerto Vallarta, rentas Puerto Vallarta">
+    <meta name="author" content="CasaPV">
+    <meta name="theme-color" content="#D99F59">
+    
+    <!-- OG Tags for Social Media -->
+    <meta property="og:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta property="og:description" content="Explora una amplia variedad de terrenos, casas, departamentos y más en Puerto Vallarta. Encuentra tu propiedad ideal en el corazón de la Riviera Nayarit.">
+    <meta name="OG:IMAGE" content="images/og_image.pnj">
+    <meta property="og:url" content="https://www.casapv.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CasaPV">
+    <meta name="twitter:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta name="twitter:description" content="Compra, venta, renta y preventas de propiedades en Puerto Vallarta. Encuentra tu hogar ideal en un destino único.">
+    <meta name="twitter:image" content="{% static 'images/www.casapv.com.png' %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static '/css/estilos_lista_ventas.css' %}">
+    <link rel="stylesheet" href="{% static '/css/fuentes.css' %}"> <!-- Esto es para cargar fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!-- GG ICONS-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"><!--SWIPER -->
+
+   <style>
+    .material-icons {
+        color: #D99F59;
+    }
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/imagen_header.png' %}" alt="Header Image" class="header-image">
+        <div class="button-container">
+            <a href="{% url 'lista_ventas' %}" class="button">Ventas</a>
+            <a href="{% url 'alquiler_list' %}" class="button">Rentas</a>
+            <a href="{% url 'terrenos_list' %}" class="button">Terrenos</a>
+            <a href="{% url 'pre_construccion_list' %}" class="button">Pre-Ventas</a>
+        </div>
+    </div>
+
+    <div class="contenedor-detalles">
+        <h2 class="titulo-detalle">{{ propiedad.colonia }}</h2>
+        <div class="grid-detalle">
+            <div class="item-detalle">
+                <i class="material-icons">home</i> Tipo de Propiedad: <strong>{{ propiedad.tipo_de_propiedad }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">attach_money</i> Precio: <strong> {{ propiedad.precio }}</strong>
+            </div>
+            
+            
+            <div class="item-detalle">
+                <i class="material-icons">bed</i> Habitaciones: <strong>{{ propiedad.habitaciones }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">shower</i> Baños: <strong>{{ propiedad.baños }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons" style="color: #D99F59;">kitchen</i> Comedor: <strong>{{ propiedad.comedor}}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons" style="color: #D99F59;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D99F59"><path d="m380-300 280-180-280-180v360ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Z"/></svg></i> Sala: <strong>{{ propiedad.sala}}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons" style="color: #D99F59;">kitchen</i> Cocina: <strong>{{ propiedad.cocina }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">room_service</i> Cuarto de Servicio: <strong>{{ propiedad.cuarto_de_servicio }}</strong>
+            </div>
+
+
+            <div class="item-detalle">
+                <i class="material-icons"></i><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D99F59"><path d="M320-480v-80h80v80h-80Zm240 0v-80h80v80h-80ZM120-80v-320h40v-160q0-66 25-124.5t68.5-102Q297-830 355.5-855T480-880q66 0 124.5 25t102 68.5Q750-743 775-684.5T800-560v160h40v320H120Zm80-80h80v-160h-80v160Zm160 0h80v-160h-80v160ZM240-400h200v-397q-86 14-143 80.5T240-560v160Zm280 0h200v-160q0-90-57-156.5T520-797v397Zm0 240h80v-160h-80v160Zm160 0h80v-160h-80v160Z"/></svg>Balcón: <strong>{{ propiedad.balcon }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">business_center</i> Amenidades en Áreas Comunes: <strong>{{ propiedad.comodidades_en_areas_comunes }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons" style="color: #D99F59;"> spa </i> Jardin: <strong>{{ propiedad.jardin }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">pool</i> Alberca: <strong>{{ propiedad.piscina }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">local_parking</i> Estacionamiento:<strong>{{ propiedad.estacionamiento }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">format_list_numbered</i> Número de Piso: <strong>{{ propiedad.numero_de_piso }}</strong>
+            </div>
+            
+            <div class="item-detalle">
+                <i class="material-icons">elevator</i> Elevador: <strong>{{ propiedad.elevador }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">roofing</i> Rooftop: <strong>{{ propiedad.rooftop }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">fitness_center</i> Gym: <strong>{{ propiedad.gym }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">weekend</i> Amueblado: <strong>{{ propiedad.amoblado }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">kitchen</i> Electrodomésticos y Muebles:<strong>{{ propiedad.electrodomesticos_y_muebles_en_general }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">kitchen</i> Tipo de Estufa: <strong>{{ propiedad.tipo_tipo_de_estufa }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">ac_unit</i> Aire Acondicionado: <strong>{{ propiedad.aire_acondicionado }}</strong>
+            </div>
+            <div class="item-detalle">
+                <i class="material-icons">local_fire_department</i> Calentador de Agua: <strong>{{ propiedad.calentador_de_agua }}</strong>
+            </div>
+
+
+            <div class="item-detalle">
+                <i class="material-icons">pets</i> Acepta Mascotas: <strong>{{ propiedad.pet_friendly }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">visibility</i> Vista Primaria:  <strong>{{ propiedad.vista_primaria }}</strong>
+            </div>
+            <div class="item-detalle">
+                <i class="material-icons">visibility</i> Vista Secundaria: <strong>{{ propiedad.vista_secundaria }}</strong>
+            </div>
+            
+
+            <div class="item-detalle">
+                <i class="material-icons">monetization_on</i> Pago de Mantenimiento: <strong>{{ propiedad.pago_de_mantenimiento }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">check_circle</i> Qué Incluye el Pago de Mantenimiento:<strong>{{ propiedad.que_incluye_el_pago_de_mantenimiento }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">home_repair_service</i> Estado de la propiedad: <strong>{{ propiedad.condiciones_de_la_propiedad }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">map</i> Superficie del Terreno: <strong>{{ propiedad.medidas_de_la_propiedad }}m²</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">description</i> Escrituras: <strong>{{ propiedad.privada_o_con_escrituras }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">walls</i> Paredes: <strong>{{ propiedad.paredes }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">streetview</i> Tipo de Calle:  <strong>{{ propiedad.tipo_de_calle }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">lightbulb</i> Tipo de Electricidad: <strong>{{ propiedad.tipo_de_electricidad }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">water_drop</i> Agua: <strong>{{ propiedad.agua }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons">location_on</i> Dirección Exacta:<strong>{{ propiedad.direccion_exacta }}</strong>
+            </div>
+        </div>
+    </div>
+    <!-- Image container for the swiper -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+        {% if propiedad.imagen1 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen1.url }}" alt="Imagen 1" data-fancybox="gallery"  class="fancybox"  onclick="openPropertyModal('{{ propiedad.imagen1.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen2 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen2.url }}" alt="Imagen 2" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen2.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen3 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen3.url }}" alt="Imagen 3" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen3.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen4 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen4.url }}" alt="Imagen 4" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen4.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen5 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen5.url }}" alt="Imagen 5" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen5.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen6 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen6.url }}" alt="Imagen 6" data-fancybox="gallery"  data-fancybox="gallery"  class="fancybox"    onclick="openPropertyModal('{{ propiedad.imagen6.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen7 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen7.url }}" alt="Imagen 7" data-fancybox="gallery"  class="fancybox"  onclick="openPropertyModal('{{ propiedad.imagen7.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen8 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen8.url }}" alt="Imagen 8" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen8.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen9 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen9.url }}" alt="Imagen 9" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen9.url }}')">
+        </div>
+        {% endif %}
+        {% if propiedad.imagen10 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen10.url }}" alt="Imagen 10" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen10.url }}')">
+        </div>
+        {% endif %}
+
+        {% if propiedad.imagen11 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen11.url }}" alt="Imagen 11" data-fancybox="gallery"  class="fancybox"  onclick="openPropertyModal('{{ propiedad.imagen11.url }}')">
+        </div>
+        {% endif %}
+
+        {% if propiedad.imagen12 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen12.url }}" alt="Imagen 12" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen12.url }}')">
+        </div>
+        {% endif %}
+
+        {% if propiedad.imagen13 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen13.url }}" alt="Imagen 13" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen13.url }}')">
+        </div>
+        {% endif %}
+
+        {% if propiedad.imagen14 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen14.url }}" alt="Imagen 14" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen14.url }}')">
+        </div>
+        {% endif %}
+
+        {% if propiedad.imagen15 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen15.url }}" alt="Imagen 15" data-fancybox="gallery"  class="fancybox"   onclick="openPropertyModal('{{ propiedad.imagen15.url }}')">
+        </div>
+        {% endif %}
+
+        {% if propiedad.imagen16 %}
+        <div class="swiper-slide">
+            <img src="{{ propiedad.imagen16.url }}" alt="Imagen 16" data-fancybox="gallery"  class="fancybox"  onclick="openPropertyModal('{{ propiedad.imagen16.url }}')">
+        </div>
+        {% endif %}
+        <!-- Add more images as needed... -->
+    </div>
+
+    <!-- Add Pagination if needed -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+
+    <script>
+        $(document).ready(function() {
+            // Initialize AOS
+            AOS.init();
+
+            // Initialize Swiper
+            var swiper = new Swiper('.swiper', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+            });
+
+            // Initialize Fancybox
+            $(".fancybox").fancybox({
+                infobar: false,
+                buttons: [
+                    'slideShow',
+                    'fullScreen',
+                    'thumbs',
+                    'close'
+                ],
+                transitionEffect: 'fade'
+            });
+        });
+    </script>
+
+
+    <div class="contenedor-agente">
+        <details class="info-agente">
+            <summary>Información del Agente</summary>
+            <div class="info-agente-content">
+                <!-- Background Image -->
+              
+                
+                <div class="info-agente-card">
+                    <div class="info-agente-text">
+                        <div class="info-agente-image">
+                            {% if propiedad.agente.foto %}
+                                <img src="{{ propiedad.agente.foto.url }}" alt="Foto de {{ propiedad.agente.nombre }}" />
+                            {% else %}
+                                <p>No hay foto disponible del agente.</p>
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div class="text">
+                        <p class="nombre"> <strong>{{ propiedad.agente.nombre }}</strong></p>
+                        <p>Email: <strong>{{ propiedad.agente.correo }}</strong></p>
+                        <p>Teléfono: <strong>{{ propiedad.agente.telefono }}</strong></p>
+                        <p>Años de Experiencia: <strong>{{ propiedad.agente.años_de_experiencia }}</strong></p>
+                        </div>
+                        <div class="container"> <!-- Centering container -->
+                            <a href="https://wa.me/{{ propiedad.agente.telefono }}" target="_blank" class="whats_agente">
+                                Contactar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
+    </div>
+    
+    
+    
+    <h3>Información Adicional</h3>
+    <div class="contenedor-informacion-adicional">
+        <p>{{ propiedad.informacion_extra }}</p>
+    </div>
+
+    <div class="contenedor-video-maps">
+        {% if propiedad.youtube_link %}
+            <h3>Video de YouTube</h3>
+            <div class="video-container">{{ propiedad.youtube_link|safe }}</div>
+        {% else %}
+            <p>No video available.</p>
+        {% endif %}
+
+        {% if propiedad.link_de_google_maps %}
+            <h3>Ubicación en Google Maps</h3>
+            <div class="maps-container">{{ propiedad.link_de_google_maps|safe }}</div>
+        {% else %}
+            <p>No Google Maps link available.</p>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info-container">
+                <h2>Agente Norma Ruiz:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227797836" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+            </div>
+            <div class="footer-info-container">
+                <h2>Agente Andres Estrada:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227798966" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+                <div class="footer-info">
+                    <p><strong>Dirección:</strong> Calle tijereta 113, Puerto Vallarta, México</p>
+                    <p><strong>Teléfono:</strong> +52 322-779-8966 | +52 322-779-7836  </p>
+                    <p><strong>Horarios:</strong> Lunes a Viernes, 10 AM - 6 PM</p>
+                </div>
+            </div>
+            <div class="footer-form-container">
+                <h4>Envianos un Correo</h4>
+                <form method="post" action="{% url 'enviar_email' %}">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    <input type="text" name="phone" placeholder="Tu teléfono" required>
+                    <textarea name="message" placeholder="Tu mensaje" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <p class="footer-rights">&copy; 2024 www.casapv.com. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="{% url 'privacy_policy' %}" class="footer-link">Política de Privacidad</a> |
+                <a href="{% url 'terms_of_service' %}" class="footer-link">Términos de Servicio</a>
+            </div>
+            <p>
+                <a href="/about_us/" class="map-link">Acerca de Nosotros</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="propertyImageModal" class="property-modal-container">
+        <span class="property-close-modal" onclick="closePropertyModal()">&times;</span>
+        <img class="property-modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openPropertyModal(imageSrc) {
+            const modal = document.getElementById("propertyImageModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImage.src = imageSrc;
+        }
+
+        function closePropertyModal() {
+            const modal = document.getElementById("propertyImageModal");
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("propertyImageModal");
+            if (event.target === modal) {
+                closePropertyModal();
+            }
+        }
+    </script>
+
+
+    
+    <!-- ANIMACIONES DE LOS CONTAINERS DE LAS PROPIEDADES-->
+    <script>
+        // JavaScript for adding the visibility class to cards on scroll
+        const propertyCards = document.querySelectorAll('.property-card');
+
+        // Function to check if an element is in the viewport
+        function checkVisibility() {
+            propertyCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    if (card.classList.contains('property-card')) {
+                        const offsetTop = rect.top;
+                        // Apply different animation classes based on position in viewport
+                        if (offsetTop > 0) {
+                            card.classList.add('visible-left'); // Slide in from the left
+                        } else if (offsetTop < window.innerHeight / 2) {
+                            card.classList.add('visible-right'); // Slide in from the right
+                        } else {
+                            card.classList.add('visible-bottom'); // Slide up from the bottom
+                        }
+                    }
+                }
+            });
+        }
+
+        // Listen for scroll event to trigger animations
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Initial check to see if elements are already in view
+        checkVisibility();
+    </script>
+</body>
+</html>

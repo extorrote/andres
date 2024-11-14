@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/estilos_creaciones_y_edicion.css' %}">
+    <title>Crear Información Adicional</title>
+</head>
+<body>
+    <h1>Crear Levantamiento</h1>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h2> Información del Agente</h2>
+        <div class="form-group">
+            <label for="{{ form.logo_agente.id_for_label }}">Logo Agente</label>
+            {{ form.logo_agente }}
+            {% if form.logo_agente.errors %}
+                <div class="errors">
+                    {% for error in form.logo_agente.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Nombre del Agente -->
+        <div class="form-group">
+            <label for="{{ form.nombre_agente.id_for_label }}">Nombre del Agente</label>
+            {{ form.nombre_agente }}
+            {% if form.nombre_agente.errors %}
+                <div class="errors">
+                    {% for error in form.nombre_agente.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Cargo en la Agencia -->
+        <div class="form-group">
+            <label for="{{ form.cargo_en_la_agencia.id_for_label }}">Cargo en la Agencia</label>
+            {{ form.cargo_en_la_agencia }}
+            {% if form.cargo_en_la_agencia.errors %}
+                <div class="errors">
+                    {% for error in form.cargo_en_la_agencia.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Teléfono del Agente -->
+        <div class="form-group">
+            <label for="{{ form.telefono_agente.id_for_label }}">Teléfono del Agente</label>
+            {{ form.telefono_agente }}
+            {% if form.telefono_agente.errors %}
+                <div class="errors">
+                    {% for error in form.telefono_agente.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Email del Agente -->
+        <div class="form-group">
+            <label for="{{ form.email_agente.id_for_label }}">Email del Agente</label>
+            {{ form.email_agente }}
+            {% if form.email_agente.errors %}
+                <div class="errors">
+                    {% for error in form.email_agente.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Página Web del Agente -->
+        <div class="form-group">
+            <label for="{{ form.pagina_web.id_for_label }}">Página Web del Agente</label>
+            {{ form.pagina_web }}
+            {% if form.pagina_web.errors %}
+                <div class="errors">
+                    {% for error in form.pagina_web.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Ciudad y Estado -->
+        <div class="form-group">
+            <label for="{{ form.ciudad_y_estado.id_for_label }}">Ciudad y Estado</label>
+            {{ form.ciudad_y_estado }}
+            {% if form.ciudad_y_estado.errors %}
+                <div class="errors">
+                    {% for error in form.ciudad_y_estado.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <h2> Información de la Propiedad</h2>
+        <div class="form-group">
+            <label for="{{ form.nombre_del_propietario.id_for_label }}">{{ form.nombre_del_propietario.label }}</label>
+            {{ form.nombre_del_propietario }}
+            {% if form.nombre_del_propietario.errors %}
+                <div class="errors">
+                    {% for error in form.nombre_del_propietario.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Ciudad -->
+        <div class="form-group">
+            <label for="{{ form.ciudad.id_for_label }}">{{ form.ciudad.label }}</label>
+            {{ form.ciudad }}
+            {% if form.ciudad.errors %}
+                <div class="errors">
+                    {% for error in form.ciudad.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Colonia -->
+        <div class="form-group">
+            <label for="{{ form.colonia.id_for_label }}">{{ form.colonia.label }}</label>
+            {{ form.colonia }}
+            {% if form.colonia.errors %}
+                <div class="errors">
+                    {% for error in form.colonia.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Calle -->
+        <div class="form-group">
+            <label for="{{ form.calle.id_for_label }}">{{ form.calle.label }}</label>
+            {{ form.calle }}
+            {% if form.calle.errors %}
+                <div class="errors">
+                    {% for error in form.calle.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Número Exterior -->
+        <div class="form-group">
+            <label for="{{ form.exterior.id_for_label }}">{{ form.exterior.label }}</label>
+            {{ form.exterior }}
+            {% if form.exterior.errors %}
+                <div class="errors">
+                    {% for error in form.exterior.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Estado -->
+        <div class="form-group">
+            <label for="{{ form.estado.id_for_label }}">{{ form.estado.label }}</label>
+            {{ form.estado }}
+            {% if form.estado.errors %}
+                <div class="errors">
+                    {% for error in form.estado.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Código Postal -->
+        <div class="form-group">
+            <label for="{{ form.cp.id_for_label }}">{{ form.cp.label }}</label>
+            {{ form.cp }}
+            {% if form.cp.errors %}
+                <div class="errors">
+                    {% for error in form.cp.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Estado de Conservación -->
+        <div class="form-group">
+            <label for="{{ form.estado_de_conservacion.id_for_label }}">{{ form.estado_de_conservacion.label }}</label>
+            {{ form.estado_de_conservacion }}
+            {% if form.estado_de_conservacion.errors %}
+                <div class="errors">
+                    {% for error in form.estado_de_conservacion.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Superficie de Terreno -->
+        <div class="form-group">
+            <label for="{{ form.superficie_de_terreno.id_for_label }}">{{ form.superficie_de_terreno.label }}</label>
+            {{ form.superficie_de_terreno }}
+            {% if form.superficie_de_terreno.errors %}
+                <div class="errors">
+                    {% for error in form.superficie_de_terreno.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Superficie de Construcción -->
+        <div class="form-group">
+            <label for="{{ form.superficie_de_construccion.id_for_label }}">{{ form.superficie_de_construccion.label }}</label>
+            {{ form.superficie_de_construccion }}
+            {% if form.superficie_de_construccion.errors %}
+                <div class="errors">
+                    {% for error in form.superficie_de_construccion.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Instalaciones Especiales -->
+        <div class="form-group">
+            <label for="{{ form.instalaciones_especiales.id_for_label }}">{{ form.instalaciones_especiales.label }}</label>
+            {{ form.instalaciones_especiales }}
+            {% if form.instalaciones_especiales.errors %}
+                <div class="errors">
+                    {% for error in form.instalaciones_especiales.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Distribución -->
+        <div class="form-group">
+            <label for="{{ form.distribucion.id_for_label }}">{{ form.distribucion.label }}</label>
+            {{ form.distribucion }}
+            {% if form.distribucion.errors %}
+                <div class="errors">
+                    {% for error in form.distribucion.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Materiales de Construcción -->
+        <div class="form-group">
+            <label for="{{ form.materiales_de_construccion.id_for_label }}">{{ form.materiales_de_construccion.label }}</label>
+            {{ form.materiales_de_construccion }}
+            {% if form.materiales_de_construccion.errors %}
+                <div class="errors">
+                    {% for error in form.materiales_de_construccion.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Acabados -->
+        <div class="form-group">
+            <label for="{{ form.acabados.id_for_label }}">{{ form.acabados.label }}</label>
+            {{ form.acabados }}
+            {% if form.acabados.errors %}
+                <div class="errors">
+                    {% for error in form.acabados.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Equipamiento General -->
+        <div class="form-group">
+            <label for="{{ form.equipamiento_general.id_for_label }}">{{ form.equipamiento_general.label }}</label>
+            {{ form.equipamiento_general }}
+            {% if form.equipamiento_general.errors %}
+                <div class="errors">
+                    {% for error in form.equipamiento_general.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Infraestructura y Urbanización -->
+        <div class="form-group">
+            <label for="{{ form.infraestructura_y_urbanizacion.id_for_label }}">{{ form.infraestructura_y_urbanizacion.label }}</label>
+            {{ form.infraestructura_y_urbanizacion }}
+            {% if form.infraestructura_y_urbanizacion.errors %}
+                <div class="errors">
+                    {% for error in form.infraestructura_y_urbanizacion.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Antigüedad de la Construcción -->
+        <div class="form-group">
+            <label for="{{ form.antiguedad_de_la_construccion.id_for_label }}">{{ form.antiguedad_de_la_construccion.label }}</label>
+            {{ form.antiguedad_de_la_construccion }}
+            {% if form.antiguedad_de_la_construccion.errors %}
+                <div class="errors">
+                    {% for error in form.antiguedad_de_la_construccion.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Estado de la Fachada -->
+        <div class="form-group">
+            <label for="{{ form.fachada.id_for_label }}">{{ form.fachada.label }}</label>
+            {{ form.fachada }}
+        </div>
+
+        <!-- Estado de la Pintura -->
+        <div class="form-group">
+            <label for="{{ form.pintura.id_for_label }}">{{ form.pintura.label }}</label>
+            {{ form.pintura }}
+        </div>
+
+        <!-- Estado de Humedades -->
+        <div class="form-group">
+            <label for="{{ form.humedades.id_for_label }}">{{ form.humedades.label }}</label>
+            {{ form.humedades }}
+        </div>
+
+        <!-- Estado de Grietas -->
+        <div class="form-group">
+            <label for="{{ form.grietas.id_for_label }}">{{ form.grietas.label }}</label>
+            {{ form.grietas }}
+        </div>
+
+        <!-- Estado de Hundimientos -->
+        <div class="form-group">
+            <label for="{{ form.undimientos.id_for_label }}">{{ form.undimientos.label }}</label>
+            {{ form.undimientos }}
+        </div>
+
+        <!-- Estado de Plomería -->
+        <div class="form-group">
+            <label for="{{ form.plomeria.id_for_label }}">{{ form.plomeria.label }}</label>
+            {{ form.plomeria }}
+        </div>
+
+        <!-- Estado de Vidriería -->
+        <div class="form-group">
+            <label for="{{ form.vidrieria.id_for_label }}">{{ form.vidrieria.label }}</label>
+            {{ form.vidrieria }}
+        </div>
+
+        <!-- Estado de Instalaciones Eléctricas -->
+        <div class="form-group">
+            <label for="{{ form.instalaciones_electricas.id_for_label }}">{{ form.instalaciones_electricas.label }}</label>
+            {{ form.instalaciones_electricas }}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Guardar</button>
+        </div>
+        <a href="{% url 'lista_ventas' %}" class="back-link">Volver al inicio</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    {%comment%}  META TAGS. {%endcomment%}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+    <title>Log in</title>
+    <link rel="stylesheet" href="{%static 'css/login.css' %}">
+   
+</head>
+<body>
+    
+
+    
+
+
+    
+<section class="form__login">
+  <h2 class="form__title"><div><a href="{% url 'lista_ventas' %}" style="color:white;">Regresar</a></div></h2>
+  
+  <form class="form__form-login" method="POST"action="">
+      <div class="form__login-input-container">
+
+    {% csrf_token %}
+    <h2 class="identificate"> Identificate </h2> 
+ <label class="label-login"for="username"> Usuario : </label>
+  <input class="input-username-login"type="text" name="username"/>
+
+  <label class="label-login" for="password"> Contraseña : </label>
+ <input  class="input-login" type="password" name="password"/>
+      
+ <div class="wrapper"><!--ESTO ES PARA SEPARAR LOS BOTONES-->
+  <div class="button-container">
+  <div class="button-container">
+      <button class="btn btn-2" type="submit">Log in</button>
+  </div>
+
+</div><!--ESTA CIERRA EL wrapper-->
+
+
+  
+  </div>
+  
+</form>
+
+</section>
+
+</body>
+</html>

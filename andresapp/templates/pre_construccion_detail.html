@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Meta Tags for SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Compra, venta, alquiler y preventas de propiedades en Puerto Vallarta. Ofrecemos terrenos, casas, departamentos y más. Encuentra tu hogar ideal en el paraíso.">
+    <meta name="keywords" content="casas en venta, terrenos en Puerto Vallarta, departamentos en renta, preventas en Puerto Vallarta, compra venta de propiedades, bienes raíces en Puerto Vallarta, rentas Puerto Vallarta">
+    <meta name="author" content="CasaPV">
+    <meta name="theme-color" content="#D99F59">
+    
+    <!-- OG Tags for Social Media -->
+    <meta property="og:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta property="og:description" content="Explora una amplia variedad de terrenos, casas, departamentos y más en Puerto Vallarta. Encuentra tu propiedad ideal en el corazón de la Riviera Nayarit.">
+    <meta name="OG:IMAGE" content="images/og_image.pnj">
+    <meta property="og:url" content="https://www.casapv.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CasaPV">
+    <meta name="twitter:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta name="twitter:description" content="Compra, venta, renta y preventas de propiedades en Puerto Vallarta. Encuentra tu hogar ideal en un destino único.">
+    <meta name="twitter:image" content="{% static 'images/www.casapv.com.png' %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+
+
+    <title>Detalles de la Pre-Venta</title>
+    <link rel="stylesheet" href="{% static '/css/estilos_lista_ventas.css' %}">
+    <link rel="stylesheet" href="{% static '/css/fuentes.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!--GG ICONS-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"><!--SWIPER -->
+
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/imagen_header.png' %}" alt="Header Image" class="header-image">
+        <div class="button-container">
+            <a href="{% url 'lista_ventas' %}" class="button">Ventas</a>
+            <a href="{% url 'alquiler_list' %}" class="button">Rentas</a>
+            <a href="{% url 'terrenos_list' %}" class="button">Terrenos</a>
+            <a href="{% url 'pre_construccion_list' %}" class="button">Pre-Ventas</a>
+        </div>
+    </div>
+
+    <div class="contenedor-detalles">
+        <h2 class="titulo-detalle">{{ pre_construccion.ubicacion }}</h2>
+        <div class="grid-detalle">
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">attach_money</span>
+                Precio Normal: <strong>$ {{ pre_construccion.precio_normal }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">attach_money</span>
+                Precio Preventa: <strong>$ {{ pre_construccion.precio_preventa }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">money_off</span>
+                Anticipo: <strong> {{ pre_construccion.anticipo }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">apartment</span>
+                Tipo de Proyecto: <strong>{{ pre_construccion.tipo_de_proyecto }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">bed</span>
+                Habitaciones: <strong>{{ pre_construccion.habitaciones }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">bathtub</span>
+                Baños: <strong>{{ pre_construccion.baños }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">living</span>
+                Sala: <strong>{{ pre_construccion.sala }}</strong>
+            </div>
+            <div class="item-detalle">
+                <i class="material-icons" style="color: #D99F59;">kitchen</i> Comedor: <strong>{{ pre_construccion.comedor}}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">kitchen</span>
+                Cocina: <strong>{{ pre_construccion.cocina }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">room_service</span>
+                Cuarto de Servicio: <strong>{{ pre_construccion.cuarto_de_servicio }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">stacked_bar_chart</span>
+                Número de Piso: <strong>{{ pre_construccion.numero_de_piso }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">location_on</span>
+                Número de Departamento: <strong>{{ pre_construccion.numero_de_departamento }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons"></i><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D99F59"><path d="M320-480v-80h80v80h-80Zm240 0v-80h80v80h-80ZM120-80v-320h40v-160q0-66 25-124.5t68.5-102Q297-830 355.5-855T480-880q66 0 124.5 25t102 68.5Q750-743 775-684.5T800-560v160h40v320H120Zm80-80h80v-160h-80v160Zm160 0h80v-160h-80v160ZM240-400h200v-397q-86 14-143 80.5T240-560v160Zm280 0h200v-160q0-90-57-156.5T520-797v397Zm0 240h80v-160h-80v160Zm160 0h80v-160h-80v160Z"/></svg>Balcón: <strong>{{ pre_construccion.balcon }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">business_center</span>
+                Áreas Comunes: <strong>{{ pre_construccion.areas_comunes }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">local_cafe</span>
+                Amenidades en Áreas Comunes: <strong>{{ pre_construccion.comodidades_en_areas_comunes }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <i class="material-icons" style="color: #D99F59;"> spa </i> Jardin: <strong>{{ pre_construccion.jardin }}</strong>
+            </div>
+            
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">pool</span>
+                Alberca: <strong>{{ pre_construccion.piscina }}</strong>
+            </div>
+            
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">elevator</span>
+                Elevador: <strong>{{ pre_construccion.elevador }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">roofing</span>
+                Rooftop: <strong>{{ pre_construccion.rooftop }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">fitness_center</span>
+                Gym: <strong>{{ pre_construccion.gym }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">directions_car</span>
+                Estacionamiento: <strong>{{ pre_construccion.estasionamiento }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">home</span>
+                Amueblado: <strong>{{ pre_construccion.amoblado }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">tv</span>
+                Electrodomésticos y Muebles: <strong>{{ pre_construccion.electrodomesticos_y_muebles_en_general }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">ac_unit</span>
+                Aire Acondicionado: <strong>{{ pre_construccion.aire_acondicionado }}</strong>
+            </div>
+            
+            
+            
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">event_note</span>
+                Fecha de Entrega: <strong>{{ pre_construccion.fecha_entrega }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">check_circle</span>
+                Se Entrega Con: <strong>{{ pre_construccion.se_entrega_con }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">description</span>
+                Politicas de Venta: <strong>{{ pre_construccion.politicas_de_venta}}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">description</span>
+                Escrituras: <strong>{{ pre_construccion.escrituras}}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">local_drink</span>
+                Agua: <strong>{{ pre_construccion.agua }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">hot_tub</span>
+                Calentador de Agua: <strong>{{ pre_construccion.calentador_de_agua }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">map</span>
+                Superficie del Terreno: <strong>{{ pre_construccion.medidas }}m²</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">map</span>
+                Total Metros Cuadrados: <strong>{{ pre_construccion.metros_cuadrados }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">wallpaper</span>
+                Paredes: <strong>{{ pre_construccion.paredes }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D99F59"><path d="M160-160v-640h80v640h-80Zm280 0v-160h80v160h-80Zm280 0v-640h80v640h-80ZM440-400v-160h80v160h-80Zm0-240v-160h80v160h-80Z"/></svg></span>
+                Tipo de Calle: <strong>{{ pre_construccion.tipo_de_calle }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">electric_meter</span>
+                Tipo de Electricidad: <strong>{{ pre_construccion.tipo_de_electricidad }}</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">place</span>
+                Dirección Exacta: <strong>{{ pre_construccion.direccion_exacta }}</strong>
+            </div>
+        </div>
+    </div>
+    vvv
+      <!-- Image container for the swiper -->
+<div class="swiper">
+    <div class="swiper-wrapper">
+        {% if pre_construccion.imagen1 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen1.url }}" alt="Imagen 1" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen1.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen2 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen2.url }}" alt="Imagen 2" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen2.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen3 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen3.url }}" alt="Imagen 3" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen3.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen4 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen4.url }}" alt="Imagen 4" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen4.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen5 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen5.url }}" alt="Imagen 5" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen5.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen6 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen6.url }}" alt="Imagen 6" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen6.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen7 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen7.url }}" alt="Imagen 7" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen7.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen8 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen8.url }}" alt="Imagen 8" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen8.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen9 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen9.url }}" alt="Imagen 9" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen9.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen10 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen10.url }}" alt="Imagen 10" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen10.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen11 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen11.url }}" alt="Imagen 11" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen11.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen12 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen12.url }}" alt="Imagen 12" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen12.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen13 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen13.url }}" alt="Imagen 13" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen13.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen14 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen14.url }}" alt="Imagen 14" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen14.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen15 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen15.url }}" alt="Imagen 15" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen15.url }}')">
+        </div>
+        {% endif %}
+        {% if pre_construccion.imagen16 %}
+        <div class="swiper-slide">
+            <img src="{{ pre_construccion.imagen16.url }}" alt="Imagen 16" data-fancybox="gallery" class="fancybox" onclick="openPropertyModal('{{ pre_construccion.imagen16.url }}')">
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Add Pagination if needed -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+
+    <script>
+        $(document).ready(function() {
+            // Initialize AOS
+            AOS.init();
+
+            // Initialize Swiper
+            var swiper = new Swiper('.swiper', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+            });
+
+            // Initialize Fancybox
+            $(".fancybox").fancybox({
+                infobar: false,
+                buttons: [
+                    'slideShow',
+                    'fullScreen',
+                    'thumbs',
+                    'close'
+                ],
+                transitionEffect: 'fade'
+            });
+        });
+    </script>
+
+
+    <div class="contenedor-agente">
+        <details class="info-agente">
+            <summary>Información del Agente</summary>
+            <div class="info-agente-content">
+                <!-- Background Image  s-->
+              
+                
+                <div class="info-agente-card">
+                    <div class="info-agente-text">
+                        <div class="info-agente-image">
+                            {% if pre_construccion.agente.foto %}
+                                <img src="{{ pre_construccion.agente.foto.url }}" alt="Foto de {{ pre_construccion.agente.nombre }}" />
+                            {% else %}
+                                <p>No hay foto disponible del agente.</p>
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div class="text">
+                        <p class="nombre"> <strong>{{ pre_construccion.agente.nombre }}</strong></p>
+                        <p>Email: <strong>{{ pre_construccion.agente.correo }}</strong></p>
+                        <p>Teléfono: <strong>{{ pre_construccion.agente.telefono }}</strong></p>
+                        <p>Años de Experiencia: <strong>{{ propiedad.agente.años_de_experiencia }}</strong></p>
+                        </div>
+                        <div class="container"> <!-- Centering container -->
+                            <a href="https://wa.me/{{ pre_construccion.agente.telefono }}" target="_blank" class="whats_agente">
+                                Contactar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
+    </div>
+    
+    
+    
+    <h3>Información Adicional</h3>
+    <div class="contenedor-informacion-adicional">
+        <p>{{ pre_construccion.informacion_extra }}</p>
+    </div>
+
+    <div class="contenedor-video-maps">
+        {% if pre_construccion.youtube_link %}
+            <h3>Video de YouTube</h3>
+            <div class="video-container">{{ pre_construccion.youtube_link|safe }}</div>
+        {% else %}
+            <p>No video available.</p>
+        {% endif %}
+
+        {% if pre_construccion.link_de_google_maps %}
+            <h3>Ubicación en Google Maps</h3>
+            <div class="maps-container">{{ pre_construccion.link_de_google_maps|safe }}</div>
+        {% else %}
+            <p>No Google Maps link available.</p>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info-container">
+                <h2>Agente Norma Ruiz:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227797836" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+            </div>
+            <div class="footer-info-container">
+                <h2>Agente Andres Estrada:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227798966" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+                <div class="footer-info">
+                    <p><strong>Dirección:</strong> Calle tijereta 113, Puerto Vallarta, México</p>
+                    <p><strong>Teléfono:</strong> +52 322-779-8966 | +52 322-779-7836  </p>
+                    <p><strong>Horarios:</strong> Lunes a Viernes, 10 AM - 6 PM</p>
+                </div>
+            </div>
+            <div class="footer-form-container">
+                <h4>Envianos un Correo</h4>
+                <form method="post" action="{% url 'enviar_email' %}">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    <input type="text" name="phone" placeholder="Tu teléfono" required>
+                    <textarea name="message" placeholder="Tu mensaje" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <p class="footer-rights">&copy; 2024 www.casapv.com. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="{% url 'privacy_policy' %}" class="footer-link">Política de Privacidad</a> |
+                <a href="{% url 'terms_of_service' %}" class="footer-link">Términos de Servicio</a>
+            </div>
+            <p>
+                <a href="/about_us/" class="map-link">Acerca de Nosotros</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="propertyImageModal" class="property-modal-container">
+        <span class="property-close-modal" onclick="closePropertyModal()">&times;</span>
+        <img class="property-modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openPropertyModal(imageSrc) {
+            const modal = document.getElementById("propertyImageModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImage.src = imageSrc;
+        }
+
+        function closePropertyModal() {
+            const modal = document.getElementById("propertyImageModal");
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("propertyImageModal");
+            if (event.target === modal) {
+                closePropertyModal();
+            }
+        }
+    </script>
+
+
+    <!-- ANIMACIONES DE LOS CONTAINERS DE LAS PROPIEDADES-->
+    <script>
+        // JavaScript for adding the visibility class to cards on scroll
+        const propertyCards = document.querySelectorAll('.property-card');
+
+        // Function to check if an element is in the viewport
+        function checkVisibility() {
+            propertyCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    if (card.classList.contains('property-card')) {
+                        const offsetTop = rect.top;
+                        // Apply different animation classes based on position in viewport
+                        if (offsetTop > 0) {
+                            card.classList.add('visible-left'); // Slide in from the left
+                        } else if (offsetTop < window.innerHeight / 2) {
+                            card.classList.add('visible-right'); // Slide in from the right
+                        } else {
+                            card.classList.add('visible-bottom'); // Slide up from the bottom
+                        }
+                    }
+                }
+            });
+        }
+
+        // Listen for scroll event to trigger animations
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Initial check to see if elements are already in view
+        checkVisibility();
+    </script>
+    
+</body>
+</html>

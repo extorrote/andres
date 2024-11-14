@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta Tags for SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Compra, venta, alquiler y preventas de propiedades en Puerto Vallarta. Ofrecemos terrenos, casas, departamentos y más. Encuentra tu hogar ideal en el paraíso.">
+    <meta name="keywords" content="casas en venta, terrenos en Puerto Vallarta, departamentos en renta, preventas en Puerto Vallarta, compra venta de propiedades, bienes raíces en Puerto Vallarta, rentas Puerto Vallarta">
+    <meta name="author" content="CasaPV">
+    <meta name="theme-color" content="#D99F59">
+    
+    <!-- OG Tags for Social Media -->
+    <meta property="og:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta property="og:description" content="Explora una amplia variedad de terrenos, casas, departamentos y más en Puerto Vallarta. Encuentra tu propiedad ideal en el corazón de la Riviera Nayarit.">
+    <meta name="OG:IMAGE" content="images/og_image.pnj">
+    <meta property="og:url" content="https://www.casapv.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CasaPV">
+    <meta name="twitter:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta name="twitter:description" content="Compra, venta, renta y preventas de propiedades en Puerto Vallarta. Encuentra tu hogar ideal en un destino único.">
+    <meta name="twitter:image" content="{% static 'images/www.casapv.com.png' %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+
+    
+    <title>Detalles del Terreno</title>
+    <link rel="stylesheet" href="{% static '/css/estilos_lista_ventas.css' %}">
+    <link rel="stylesheet" href="{% static '/css/fuentes.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!--GG ICONS-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"><!--SWIPER -->
+
+    <!-- Custom CSS for Modal -->
+    <style>
+        /* Modal container */
+        .property-modal-container {
+            display: none; /* Hidden initially */
+            position: fixed; /* Fixed position for modal */
+            z-index: 1000; /* Make sure it's above other elements */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with transparency */
+            justify-content: center; /* Center modal horizontally and vertically */
+            align-items: center;
+        }
+
+        /* Modal Image */
+        .property-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        /* Close button */
+        .property-close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/imagen_header.png' %}" alt="Header Image" class="header-image">
+        <div class="button-container">
+            <a href="{% url 'lista_ventas' %}" class="button">Ventas</a>
+            <a href="{% url 'alquiler_list' %}" class="button">Rentas</a>
+            <a href="{% url 'terrenos_list' %}" class="button">Terrenos</a>
+            <a href="{% url 'pre_construccion_list' %}" class="button">Pre-Ventas</a>
+        </div>
+    </div>
+
+    <div class="contenedor-detalles">
+        <h2 class="titulo-detalle">{{ terreno.ubicacion }}</h2>
+        
+        <div class="grid-detalle">
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">location_on</span>
+                Direccion Exacta: <strong> {{ terreno.direccion_exacta }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">attach_money</span>
+                Precio: <strong>$ {{ terreno.precio }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">straighten</span>
+                Medidas: <strong>{{ terreno.medidas }}m²</strong>
+            </div>
+
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">straighten</span>
+                Total en Metros Cúadrados: <strong>{{ terreno.metros_cuadrados }}m²</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">insert_drive_file</span>
+                Ejidal o Escrituras: <strong>{{ terreno.propiedad_privada_o_con_escrituras }}</strong>
+            </div>
+            <div class="item-detalle">
+                <span class="material-icons" style="color: #D99F59;">map</span>
+                Uso de Suelo: <strong>{{ terreno.uso_de_suelo }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image container for the swiper -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% if terreno.imagen1 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen1.url }}" alt="Imagen 1" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen1.url }}')">
+            </div>
+            {% endif %}
+            {% if terreno.imagen2 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen2.url }}" alt="Imagen 2" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen2.url }}')">
+            </div>
+            {% endif %}
+            {% if terreno.imagen3 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen3.url }}" alt="Imagen 3" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen3.url }}')">
+            </div>
+            {% endif %}
+            {% if terreno.imagen4 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen4.url }}" alt="Imagen 4" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen4.url }}')">
+            </div>
+            {% endif %}
+            {% if terreno.imagen5 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen5.url }}" alt="Imagen 5" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen5.url }}')">
+            </div>
+            {% endif %}
+            {% if terreno.imagen6 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen6.url }}" alt="Imagen 6" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen6.url }}')">
+            </div>
+            {% endif %}
+            {% if terreno.imagen7 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen7.url }}" alt="Imagen 7" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen7.url }}')">
+            </div>
+            {% endif %}
+            {% if terreno.imagen8 %}
+            <div class="swiper-slide">
+                <img src="{{ terreno.imagen8.url }}" alt="Imagen 8" class="fancybox" onclick="openPropertyModal('{{ terreno.imagen8.url }}')">
+            </div>
+            {% endif %}
+            <!-- Add more images as needed... -->
+        </div>
+
+        <!-- Add Pagination if needed -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize AOS
+            AOS.init();
+
+            // Initialize Swiper
+            var swiper = new Swiper('.swiper', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+            });
+
+            // Initialize Fancybox (only for non-modal images)
+            $(".fancybox").fancybox({
+                infobar: false,
+                buttons: [
+                    'slideShow',
+                    'fullScreen',
+                    'thumbs',
+                    'close'
+                ],
+                transitionEffect: 'fade',
+                selector: '.fancybox:not([data-no-fancybox])'  // Ensure modal images are excluded
+            });
+        });
+
+        // Modal open and close functionality
+        function openPropertyModal(imageSrc) {
+            const modal = document.getElementById("propertyImageModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImage.src = imageSrc;
+        }
+
+        function closePropertyModal() {
+            const modal = document.getElementById("propertyImageModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("propertyImageModal");
+            if (event.target === modal) {
+                closePropertyModal();
+            }
+        }
+    </script>
+
+    <div class="contenedor-agente">
+        <details class="info-agente">
+            <summary>Información del Agente</summary>
+            <div class="info-agente-content">
+                <div class="info-agente-card">
+                    <div class="info-agente-text">
+                        <div class="info-agente-image">
+                            {% if terreno.agente.foto %}
+                                <img src="{{ terreno.agente.foto.url }}" alt="Foto de {{ terreno.agente.nombre }}" />
+                            {% else %}
+                                <p>No hay foto disponible del agente.</p>
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div class="text">
+                            <p class="nombre"><strong>{{ terreno.agente.nombre }}</strong></p>
+                            <p>Email: <strong>{{ terreno.agente.correo }}</strong></p>
+                            <p>Teléfono: <strong>{{ terreno.agente.telefono }}</strong></p>
+                            <p>Años de Experiencia: <strong>{{ terreno.agente.años_de_experiencia }}</strong></p>
+                        </div>
+                        <div class="container">
+                            <a href="https://wa.me/{{ terreno.agente.telefono }}" target="_blank" class="whats_agente">Contactar por WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
+    </div>
+    <h3>Información Adicional</h3>
+    <div class="contenedor-informacion-adicional">
+        <p>{{ terreno.informacion_extra }}</p>
+    </div>
+
+    <div class="contenedor-video-maps">
+        {% if terreno.youtube_link %}
+            <h3>Video de YouTube</h3>
+            <div class="video-container">{{ terreno.youtube_link|safe }}</div>
+        {% else %}
+            <p>No hay video disponible.</p>
+        {% endif %}
+
+        {% if terreno.link_de_google_maps %}
+        
+            <h3>Ubicación en Google Maps</h3>
+            <div class="maps-container">{{ terreno.link_de_google_maps|safe }}</div>
+        {% else %}
+            <p>No hay enlace de Google Maps disponible.</p>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info-container">
+                <h2>Agente Norma Ruiz:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227797836" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+            </div>
+            <div class="footer-info-container">
+                <h2>Agente Andres Estrada:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227798966" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+                <div class="footer-info">
+                    <p><strong>Dirección:</strong> Calle tijereta 113, Puerto Vallarta, México</p>
+                    <p><strong>Teléfono:</strong> +52 322-779-8966 | +52 322-779-7836  </p>
+                    <p><strong>Horarios:</strong> Lunes a Viernes, 10 AM - 6 PM</p>
+                </div>
+            </div>
+            <div class="footer-form-container">
+                <h4>Envianos un Correo</h4>
+                <form method="post" action="{% url 'enviar_email' %}">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    <input type="text" name="phone" placeholder="Tu teléfono" required>
+                    <textarea name="message" placeholder="Tu mensaje" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <p class="footer-rights">&copy; 2024 www.casapv.com. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="{% url 'privacy_policy' %}" class="footer-link">Política de Privacidad</a> |
+                <a href="{% url 'terms_of_service' %}" class="footer-link">Términos de Servicio</a>
+            </div>
+            <p>
+                <a href="/about_us/" class="map-link">Acerca de Nosotros</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="propertyImageModal" class="property-modal-container">
+        <span class="property-close-modal" onclick="closePropertyModal()">&times;</span>
+        <img class="property-modal-content" id="modalImage">
+    </div>
+
+    
+    
+    
+    <!-- ANIMACIONES DE LOS CONTAINERS DE LAS PROPIEDADES-->
+    <script>
+        // JavaScript for adding the visibility class to cards on scroll
+        const propertyCards = document.querySelectorAll('.property-card');
+
+        // Function to check if an element is in the viewport
+        function checkVisibility() {
+            propertyCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    if (card.classList.contains('property-card')) {
+                        const offsetTop = rect.top;
+                        // Apply different animation classes based on position in viewport
+                        if (offsetTop > 0) {
+                            card.classList.add('visible-left'); // Slide in from the left
+                        } else if (offsetTop < window.innerHeight / 2) {
+                            card.classList.add('visible-right'); // Slide in from the right
+                        } else {
+                            card.classList.add('visible-bottom'); // Slide up from the bottom
+                        }
+                    }
+                }
+            });
+        }
+
+        // Listen for scroll event to trigger animations
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Initial check to see if elements are already in view
+        checkVisibility();
+    </script>
+</body>
+</html>

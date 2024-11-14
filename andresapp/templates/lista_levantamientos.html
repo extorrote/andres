@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            background-color: white; 
+            box-sizing: inline-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+        }
+        .container {
+            width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            height: 178.5px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        header img {
+            width: 45%;
+        }
+        .header-text {
+            margin-right: 51px;
+        }
+        .header-text p {
+            margin: 2px 0;
+        }
+        h1, h2 {
+            color: #333;
+            font-family: Verdana, sans-serif;
+        }
+        h1 {
+            font-size: 20px;
+            margin: auto;
+        }
+        h2 {
+            font-size: 16px;
+            display: flex;
+            margin-top: 10px;
+            
+        }
+        .estadode-conservacion h3{
+            font-size: 16px;
+            display: flex;
+            margin-top: 10px;
+        }
+        .data-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4.25px;
+            margin-top: 8px; /* Added margin-top for spacing */
+        }
+        a {
+            text-decoration: none;
+        }
+        a:visited {
+            color: black;
+        }
+        span {
+            margin-left: 15px;
+            text-transform: uppercase;
+           
+            border-radius: 8px; /* Rounded corners */
+            padding: 5px; /* Padding inside the box */
+            
+            background-color: #f9f9f9; /* Light background color */
+        }
+        strong{
+            text-transform:capitalize;
+        }
+        .data-label {
+            flex: 2; /* Increased flex to give more space to labels */
+            font-weight: bold;
+        }
+        .no-border {
+            border: none; /* Remove border for specified elements */
+            text-align: center; /* Center text */
+            margin: 0; /* Remove default margin */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px; /* Space between grid items */
+            margin-bottom: 10px;
+        }
+        footer {
+            position: relative;
+            text-align: center;
+            height: 178.5px;
+            
+            margin-top:40px;
+            font-family: Verdana, sans-serif;
+        }
+        footer img {
+            width: 320px;
+            height: 200px;
+            margin-top:-97px;
+        }
+        .footer-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.338);
+            padding: 10px;
+            width: 90%;
+            text-align: center;
+        }
+        .footer-overlay p {
+            margin: 2px 0;
+        }
+        .stacked-data {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+            margin-left: 4px; /* Set left margin */
+            width: 100%; /* Adjust width as needed */
+        }
+        .address-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: -20px; /* Space between items */
+            margin-bottom: 10px; /* Spacing below the grid */
+        }
+        .address-grid .data-row {
+            display: flex;
+            justify-content: space-between; /* Align label and value */
+            align-items: center; /* Center align vertically */
+        }
+        .grid-item span{
+            display:flex;
+            margin:auto;
+            margin-left:15px;
+        }
+        .data-row{
+            margin-top:4px;
+        }
+
+        .centrar{
+            margin-left:300px;
+            width:100%;
+        }
+        .margin-left{
+            margin-left:100px;
+        }
+
+                /* Container for the whole content */
+        .estado-conservacion {
+            font-family: 'Arial', sans-serif;
+            padding: 15px;  /* Reduced padding */
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            max-width: 1000px;  /* Adjusted width */
+            margin: 0 auto;
+        }
+
+        /* Heading */
+        .titulo {
+            font-size: 1.5em;  /* Slightly smaller heading */
+            color: #333;
+            margin-bottom: 15px;  /* Reduced margin */
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Grid container for each condition */
+        .grid-diferente {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);  /* 4 equal columns */
+            gap: 2px;  /* Reduced gap between elements */
+            padding: 8px 0;  /* Reduced padding */
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Styling for the strong labels */
+        .label {
+            font-size: 0.9em;  /* Slightly smaller text size */
+            color: #555;
+            font-weight: bold;
+            display: block;  /* Ensure labels are block-level for better alignment */
+        }
+
+        /* Styling for the span values */
+        .valor {
+            font-size: 0.9em;  /* Slightly smaller text size */
+            color: #333;
+            font-weight: normal;
+        }
+
+        /* Add space between rows */
+        .grid-diferente:last-child {
+            border-bottom: none;
+        }
+
+        /* Make the container responsive */
+        @media (max-width: 1024px) {
+            .grid-diferente {
+                grid-template-columns: repeat(3, 1fr);  /* 3 items per row on tablets */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-diferente {
+                grid-template-columns: repeat(2, 1fr);  /* 2 items per row on medium screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-diferente {
+                grid-template-columns: 1fr;  /* 1 item per row on small screens */
+            }
+        }
+
+        .grid-container span{
+            text-wrap:nowrap;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            {% for info in info_list %}
+            {% if info.logo_agente %}
+                
+                    <img src="{{ info.logo_agente.url }}" alt="foto anegte">  
+                {%endif%}
+                <div class="header-text">
+                    <p>{{info.nombre_agente}}</p>
+                    <p>{{info.cargo_en_la_agencia}}</p>
+                    <p>Teléfono: {{info.telefono_agente}}</p>
+                    <p>Email: {{info.email_agente}}</p>
+                    <p>Página Web: <a style="color:blue;" href="http://{{ficha.pagina_web}}">{{info.pagina_web}}</a></p>
+                    <p>{{info.ciudad_y_estado}}</p>
+            </div>
+        </header>
+
+        <section>
+            <h2>LEVANTAMIENTO E INFORMACIÓN DEL BIEN INMUEBLE</h2>
+            <div class="grid-container">
+                
+                <div class="data-row grid-item" style="grid-column: span 2; text-align: center;">
+                    <strong>Nombre del propietario:</strong>
+                    <span>{{ info.nombre_del_propietario }}</span>
+                </div>
+
+                <div class="data-row no-border" style="grid-column: span 2;">
+                    <strong style="display: block; margin: 0 auto; text-align: center;">DIRECCIÓN DEL INMUEBLE:</strong>
+                    <span>{{ info.direccion_del_inmueble }}</span>
+                </div>
+
+                <div class="address-grid">
+                    <div class="data-row grid-item margin-left">
+                        <strong>Ciudad:</strong>
+                        <span>{{ info.ciudad }}</span>
+                    </div>
+                    <div class="data-row grid-item centrar">
+                        <strong>Colonia:</strong>
+                        <span>{{ info.colonia }}</span>
+                    </div>
+                    <div class="data-row grid-item margin-left">
+                        <strong>Calle:</strong>
+                        <span>{{ info.calle }}</span>
+                    </div>
+                    <div class="data-row grid-item centrar">
+                        <strong>Número exterior:</strong>
+                        <span>{{ info.exterior }}</span>
+                    </div>
+                    <div class="data-row grid-item margin-left">
+                        <strong>Estado:</strong>
+                        <span>{{ info.estado }}</span>
+                    </div>
+                    <div class="data-row grid-item centrar">
+                        <strong>Código Postal:</strong>
+                        <span>{{ info.cp }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="estado-conservacion">
+                <h3 class="titulo">Estado de conservación:</h3>
+                <div class="grid-diferente">
+                    <strong class="label">Estado de la fachada:</strong>
+                    <span class="valor">{{ info.fachada }}</span>
+                    <strong class="label">Estado de la pintura:</strong>
+                    <span class="valor">{{ info.pintura }}</span>
+                    <strong class="label">Estado de humedades:</strong>
+                    <span class="valor">{{ info.humedades }}</span>
+                    <strong class="label">Estado de grietas:</strong>
+                    <span class="valor">{{ info.grietas }}</span>
+                </div>
+                <div class="grid-diferente">
+                    <strong class="label">Estado de hundimientos:</strong>
+                    <span class="valor">{{ info.undimientos }}</span>
+                    <strong class="label">Estado de plomería:</strong>
+                    <span class="valor">{{ info.plomeria }}</span>
+                    <strong class="label">Estado de vidriería:</strong>
+                    <span class="valor">{{ info.vidrieria }}</span>
+                    <strong class="label">Estado de instalaciones eléctricas:</strong>
+                    <span class="valor">{{ info.instalaciones_electricas }}</span>
+                </div>
+            </div>
+
+                <div class="stacked-data">
+                    <div class="data-row grid-item">
+                        <strong>Superficie de terreno:</strong>
+                        <span>{{ info.superficie_de_terreno }}</span><h4>m²</h4>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong>Superficie de construcción:</strong>
+                        <span>{{ info.superficie_de_construccion }}</span></h4>m²</h4>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong>Instalaciones especiales:</strong>
+                        <span>{{ info.instalaciones_especiales }}</span>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong>Distribución:</strong>
+                        <span>{{ info.distribucion }}</span>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong>Materiales de construcción:</strong>
+                        <span>{{ info.materiales_de_construccion }}</span>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong>Acabados:</strong>
+                        <span>{{ info.acabados }}</span>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong>Equipamiento general:</strong>
+                        <span>{{ info.equipamiento_general }}</span>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong>Infraestructura y urbanización:</strong>
+                        <span>{{ info.infraestructura_y_urbanizacion }}</span>
+                    </div>
+                    <div class="data-row grid-item">
+                        <strong><a href="{% url 'editar_levantamientos' info.pk %}" >Antigüedad de la construcción:</a></strong>
+                        <span>{{ info.antiguedad_de_la_construccion }}</span>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </section>
+
+        <footer>
+            {% if info.logo_agente%}
+            <img src="{{ info.logo_agente.url }}" alt="foto anegte">
+            {%endif%}
+            <div class="footer-overlay">
+                <p>{{info.nombre_agente}}</p>
+                    <p>{{info.cargo_en_la_agencia}}</p>
+                    <p>Teléfono: {{info.telefono_agente}}</p>
+                    <p>Email: {{info.email_agente}}</p>
+                    <p>Página Web: <a style="color:blue;" href="http://{{ficha.pagina_web}}">{{info.pagina_web}}</a></p>
+                    <p>{{info.ciudad_y_estado}}</p>
+                    {% endfor %}
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

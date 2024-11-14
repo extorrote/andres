@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas Tecnicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            width: 900px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 150px;
+        }
+        .header img {
+            max-width: 300px;
+            margin-right: 10px;
+        }
+        .header-text {
+            color: #333;
+            text-align: right;
+            margin-right: 40px;
+        }
+        .header-text p {
+            margin: 2px 0;
+        }
+        .header-text a {
+            color: #28a745;
+            text-decoration: none;
+        }
+        .ficha-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 0; /* Remove padding to eliminate space */
+        }
+        .ficha-card {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .ficha-card h3 {
+            margin-top: 0;
+            color: #28a745;
+            font-size: 1.5em;
+        }
+        .ficha-card p {
+            font-size: 1.1em;
+            text-transform: capitalize;
+            margin-left: 10px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Force 4 columns */
+            gap: 0; /* Remove gaps */
+            margin: 0; /* Remove any margin */
+        }
+        .image-grid img {
+            width: 100%; /* Ensure the image takes the full width of the grid cell */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: block; /* Ensure there's no gap below the image */
+        }
+        .footer {
+            position: relative;
+            margin-top: 12px;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: 170px;
+        }
+        .footer img {
+            width: 100%;
+            max-width: 300px;
+            margin-top: -80px;
+        }
+        .footer-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            z-index: 1;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.365);
+            padding: 10px;
+        }
+        .footer-text p {
+            margin: 2px 0;
+        }
+        a{
+            text-decoration:none;
+        }
+        a:visited{
+            color:black;
+        }
+        @media (max-width: 600px) {
+            .ficha-card {
+                width: calc(100% - 20px);
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header img {
+                margin-bottom: 10px;
+            }
+            .header-text {
+                text-align: left;
+            }
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr); /* Use 2 columns on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ficha-container">
+        {% for ficha in fichas %}
+            <div class="ficha-card">
+                <div class="header">
+                    {% if ficha.logo_agente %}
+                
+                    <img src="{{ ficha.logo_agente.url }}" alt="foto anegte">  
+                {%endif%}
+                <div class="header-text">
+                    <p>{{ficha.nombre_agente}}</p>
+                    <p>{{ficha.cargo_en_la_agencia}}</p>
+                    <p>Teléfono: {{ficha.telefono_agente}}</p>
+                    <p>Email: {{ficha.email_agente}}</p>
+                    <p>Página Web: <a style="color:blue;" href="http://{{ficha.pagina_web}}">{{ficha.pagina_web}}</a></p>
+                    <p>{{ficha.ciudad_y_estado}}</p>
+                    </div>
+                    
+                </div>
+                <h1>FICHA TECNICA DEL INMUEBLE</h1>
+                <p><strong>Estado de Conservación:</strong> {{ ficha.estado_conservacion }}</p>
+                <p><strong>Superficie de Terreno:</strong> {{ ficha.superficie_terreno }} m²</p>
+                <p><strong>Superficie de Construcción:</strong> {{ ficha.superficie_construccion }} m²</p>
+                <p><strong>Antigüedad:</strong> {{ ficha.antiguedad }} </p>
+                <p><strong>Precio de Venta:</strong> {{ ficha.precio_venta }} </p>
+                <p><strong>Instalaciones Especiales:</strong> {{ ficha.instalaciones_especiales }}</p>
+                <p><strong>Distribución de Materiales de Construcción en General:</strong> {{ ficha.distribucion_materiales }}</p>
+                <p><strong>Infraestructura de Zona:</strong> {{ ficha.infraestructura_zona }}</p>
+                <p><strong>Urbanización:</strong> {{ ficha.urbanizacion }}</p>
+                <p><strong><a href="{% url 'editar_ficha_tecnica' ficha.pk %}">Situacion Legal</a></strong> {{ ficha.situacion_legal }}</p>
+                <div class="image-grid">
+                    {% if ficha.foto_1 %}<img src="{{ ficha.foto_1.url }}" alt="Foto 1">{% endif %}
+                    {% if ficha.foto_2 %}<img src="{{ ficha.foto_2.url }}" alt="Foto 2">{% endif %}
+                    {% if ficha.foto_3 %}<img src="{{ ficha.foto_3.url }}" alt="Foto 3">{% endif %}
+                    {% if ficha.foto_4 %}<img src="{{ ficha.foto_4.url }}" alt="Foto 4">{% endif %}
+                </div>
+            </div>
+            
+        
+        
+    </div>
+
+    <div class="footer">
+        {% if ficha.logo_agente %}
+        <img src="{{ ficha.logo_agente.url }}" alt="logo anegte">  
+        {%endif%}
+        <div class="footer-text">
+            <p>{{ficha.nombre_agente}}</p>
+            <p>{{ficha.cargo_en_la_agencia}}</p>
+            <p>Teléfono: {{ficha.telefono_agente}}</p>
+            <p>Email: {{ficha.email_agente}}</p>
+            <p>Página Web: <a style="color:blue;" href="http://{{ficha.pagina_web}}">{{ficha.pagina_web}}</a></p>
+            <p>{{ficha.ciudad_y_estado}}</p>
+            
+        </div>
+       
+    </div>
+    {% empty %}
+    <div style="width: 100%; text-align: center; color: #333;">
+        <p>No hay Fichas Tecnicas por el Momento.</p>
+    </div>
+{% endfor %}
+</body>
+</html>
+
+
+
+                    
+                    
+                    
+                    
+                    
+                    

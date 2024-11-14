@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Documentos</title>
+    <style>
+        * { background-color: white; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+        }
+        .container {
+            width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            height: 178.5px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        header img {
+            width: 45%;
+        }
+        .header-text {
+            margin-right: 51px;
+        }
+        .header-text p {
+            margin: 2px 0;
+        }
+        h1, h2 {
+            color: #333;
+            font-family: Verdana, sans-serif;
+        }
+        h1 { font-size: 20px; margin: auto; }
+        h2 { font-size: 16px; margin-top: 10px; }
+        .data-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4.25px;
+        }
+        H1{
+            margin-bottom:15px;
+            margin-left:40px;
+        }
+        a{
+            text-decoration:none;
+        }
+        a:visited{
+            color:black;
+        }
+        .data-label {
+            flex: 1;
+            font-weight: bold;
+            
+           
+        }
+        .data-value {
+            flex: 2;
+            border: 1px solid #ccc;
+            height:20px;
+            width:200px;
+            border-radius: 4px;
+        }
+       
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: .1px;
+            
+        }
+
+        
+        footer {
+            position: relative;
+            text-align: center;
+            height: 250px; /* Increased height for better logo visibility */
+            overflow:hidden;
+            border-top: 1px solid #ccc;
+            font-family: Verdana, sans-serif;
+            
+        }
+        footer img {
+            width: 40%; /* Increased size of the logo */
+            height: auto;
+            opacity: 1; /* Set to full opacity for better visibility */
+            margin-top:-99px;
+            
+        }
+        .footer-overlay {
+            position: absolute;
+            bottom:85px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: transparent; /* Increased opacity for clearer text */
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            
+        }
+        .footer-overlay p {
+            margin: 2px 0;
+        }
+
+        /* Container for the entire firmas section */
+        .firmas {
+            margin-top: 10px;
+            text-align: center;
+            height:380px;
+            width: 100%;
+            
+        }
+        
+        /* Title for the document */
+        .firmas h2 {
+            font-size: 22px;
+            font-weight: bold;
+            
+        }
+        
+        /* Section for Entrega and Recibe labels under the heading */
+        .labels {
+            display: flex;
+            justify-content: center; /* Center the labels horizontally */
+            gap: 50px; /* Add space between the labels */
+            margin-bottom: 20px; /* Add space between labels and signature section */
+        }
+        
+        /* Styling for each label ("ENTREGA" and "RECIBE") */
+        .label h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        /* Flex container to display both "ENTREGA" and "RECIBE" signature sections side by side */
+        .firma-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 40px;
+        }
+        
+        /* Individual firma box for each side ("ENTREGA" and "RECIBE") */
+        .firma {
+            width: 45%; /* 45% width to leave space in between */
+            text-align: center;
+            margin: 20px;
+        }
+        
+        /* Heading inside each firma box */
+        .firma h3 {
+            margin-bottom: 30px;  /* Large space between the label and the signature line */
+            font-size: 20px;
+            font-weight: normal;
+        }
+        
+        /* Signature line for both "ENTREGA" and "RECIBE" */
+        .firma-line {
+            border: none;
+            border-top: 2px solid #000;  /* Thicker signature line */
+            width: 80%;  /* Signature line takes 80% of the box */
+            height: 50px; /* Space for signature */
+            margin-top: 0;
+            margin-bottom: 20px; /* Space below the line for more content */
+        }
+        
+
+        .quitar_margin_top{
+            margin-top:-90px;
+            
+        }
+
+        .quitar_margin_bottom{
+            margin-bottom:-90px;
+        }
+        .acuse{
+            margin-bottom:-25px;
+        }
+        input{
+            width:100px;
+            height:30px;
+        }
+        .lineas_datos{
+            width:100px;
+            height:1px;
+            background-color:rgba(0, 0, 0, 0.836); 
+            margin-right:10px;
+        }
+        .hr_nombre{
+            width:610px;
+            margin-left:-5px
+            height:1px;
+            display:flex;
+            background-color:rgba(0, 0, 0, 0.836); 
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="/static/images/logo_agente.png" alt="Logo">
+        <div class="header-text">
+            <p>Andres Estrada Macias</p>
+            <p>Acesor Inmobiliario</p>
+            <p>Teléfono: +52 (322) 779-8966</p>
+            <p>Email: Andrew_2000m@hotmail.com</p>
+            <p>Página Web: <a href="http://www.casapv.com">www.casapv.com</a></p>
+            <p>Puerto Vallarta Jalisco</p>
+        </div>
+    </header>
+
+    <main>
+        <h1>LISTADO/ CARPETA DE DOCUMENTOS A SOLICITAR DEL PROSPECTO VENDEDOR/ARRENDADOR Y DEL INMUEBLE </h1>
+
+        <div class="data-row">
+                <input type="checkbox" id="vendedor" />
+                <label for="vendedor" class="data-label">Nombre del vendedor/arrendador:</label>
+                <hr class="hr_nombre"/>
+            </div>
+            
+        <div class="grid-container">
+            
+            <div class="data-row">
+                <input type="checkbox" id="vendedor" />
+                <label for="vendedor" class="data-label">Fecha:</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="identificacionOficial" />
+                <label for="identificacionOficial" class="data-label">Identificación oficial.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="identificacionConyuge" />
+                <label for="identificacionConyuge" class="data-label">Identificación del cónyuge (si aplica).</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="actaNacimientoConyuge" />
+                <label for="actaNacimientoConyuge" class="data-label">Acta de nacimiento del cónyuge (si aplica).</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="actaNacimientoVendedor" />
+                <label for="actaNacimientoVendedor" class="data-label">Acta de nacimiento del vendedor/arrendador.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="actaMatrimonio" />
+                <label for="actaMatrimonio" class="data-label">Acta de matrimonio (si aplica).</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="estadoCuenta" />
+                <label for="estadoCuenta" class="data-label">Estado de cuenta bancario vigente.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="constanciaSituacionFiscal" />
+                <label for="constanciaSituacionFiscal" class="data-label">Constancia de Situación Fiscal vigente.</label>
+                <hr class="lineas_datos"/>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="data-row">
+                <input type="checkbox" id="curpVendedor" />
+                <label for="curpVendedor" class="data-label">CURP del vendedor/arrendador.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="comprobanteDomicilio" />
+                <label for="comprobanteDomicilio" class="data-label">Comprobante de domicilio.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="tituloPropiedad" />
+                <label for="tituloPropiedad" class="data-label">Titulo de propiedad del inmueble.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="comprobantePredial" />
+                <label for="comprobantePredial" class="data-label">Comprobante de pago de predial (últimos 6 meses).</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="comprobanteAgua" />
+                <label for="comprobanteAgua" class="data-label">Comprobante de pago de agua (últimos 6 meses).</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="comprobanteLuz" />
+                <label for="comprobanteLuz" class="data-label">Comprobante de pago de luz/telefonía fija (últimos 6 meses).</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="avisoPrivacidad" />
+                <label for="avisoPrivacidad" class="data-label">Aviso de privacidad firmado.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="cartaDerechosConsumidor" />
+                <label for="cartaDerechosConsumidor" class="data-label">Carta de derechos del consumidor firmada.</label>
+                <hr class="lineas_datos"/>
+            </div>
+            <div class="data-row">
+                <input type="checkbox" id="acuseReciboDocumentos" />
+                <label for="acuseReciboDocumentos" class="data-label">Acuse de recibo de documentos firmado.</label>
+                <hr class="lineas_datos"/>
+            </div>
+        </div>
+    </main>
+    <div class="firmas">
+        <h2 class="acuse">ACUSE DE RECIBO DE LA LISTA DE DOCUMENTOS RECIBIDOS POR EL ACESOR</h2>
+        
+        <!-- Section for Entrega and Recibe labels, centered -->
+        <div class="labels">
+            <div class="firma entrega quitar_margin_bottom">
+                <h3>ENTREGA</h3>
+            </div>
+            <div class="firma recibe quitar_margin_bottom">
+                <h3>RECIBE</h3>
+            </div>
+        </div>
+    
+        <!-- Signature containers -->
+        <div class="firma-container">
+            <div class="firma entrega">
+                <h3>Nombre Completo</h3>
+                <hr class="firma-line">
+                <h3>Firma</h3>
+                <hr class="firma-line">
+                <!-- Space for signature -->
+            </div>
+            <div class="firma recibe">
+                <h3>Nombre Completo</h3>
+                <hr class="firma-line">
+                <h3>Firma</h3>
+                <hr class="firma-line">
+                <!-- Space for signature -->
+            </div>
+            
+        </div>
+        <div class="labels">
+            <div class="firma entrega quitar_margin_top">
+                <h3>Vendedor/Arrendador</h3>
+            </div>
+            <div class="firma recibe quitar_margin_top">
+                <h3>Acesor Inmobiliario</h3>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+
+    <footer>
+        <img src="/static/images/logo_agente.png" alt="Logo">
+        <div class="footer-overlay">
+            <p>Andres Estrada Macias</p>
+            <p>Acesor Inmobiliario</p>
+            <p>Teléfono: +52 (322) 779-8966</p>
+            <p>Email: Andrew_2000m@hotmail.com</p>
+            <p>Página Web: <a href="http://www.casapv.com">www.casapv.com</a></p>
+            <p>Puerto Vallarta Jalisco</p>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - casapv.com</title>
+    <style>
+    
+        body {
+            
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            text-align: center; /* Centering text */
+            max-width: 1200px; /* Centering content with max width */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .header, .footer {
+            width: 100vw; /* Full viewport width */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw; /* Adjust left margin to center */
+            margin-right: -50vw; /* Adjust right margin to center */
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 40%;
+            background-image: url('/static/images/imagen_header.png');
+            background-size: cover;
+        }
+        .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-wrap: no-wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .button {
+            padding: 16px 24px;
+            background-color: #D99F59;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        @media screen and (max-width:547px){
+            .button {
+                padding: 12px 10px;  
+            }
+            .header-image {
+                display:none;      
+            }
+            .header {
+                background-image: url('/static/images/imagen_header4.png');
+                background-size: cover;
+            }
+        }  
+        @media (max-width: 768px) {
+            .header {
+                padding-top: 56.25%;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                padding-top: 75%;
+            }
+            .button {
+                font-size: 14px;
+            }
+        }
+        h1, h2, h3 {
+            color: #D99F59; /* Highlight color for headings */
+        }
+        h1 {
+            margin-top: 40px;
+            font-size: 2.5rem;
+            text-transform: uppercase; /* Make it stand out */
+        }
+        h2 {
+            margin: 20px 0;
+            font-size: 2rem;
+        }
+        h3 {
+            margin: 15px 0;
+            font-size: 1.5rem;
+        }
+        p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            padding: 0 15px; /* Add padding for better spacing */
+        }
+        ul {
+            list-style-type: disc;
+            margin: 20px auto;
+            padding-left: 0; /* Remove default left padding */
+            text-align: center; /* Center the list */
+        }
+        li {
+            margin-bottom: 10px;
+            display: inline-block; /* Makes li behave like inline elements */
+            text-align: left; /* Keep text alignment for individual items */
+        }
+        .footer {
+            background-image: url('/static/images/imagen_footer4.png');
+            margin-top: 25px;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+        }
+        h3 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer p {
+            font-size: 16px;
+        }
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            transition: transform 0.3s;
+        }
+        .whatsapp { background-image: url(/static/images/whatsapp.png); }
+        .instagram { background-image: url(/static/images/instargram.png); }
+        .facebook { background-image: url(/static/images/facebook.png); }
+        .youtube { background-image: url(/static/images/youtube.png); }
+        .social-icon:hover { transform: scale(1.1); }
+        .footer-info { margin: 20px 0; font-size: 0.9rem; }
+        .footer-rights { margin: 15px 0; font-size: 0.8rem; opacity: 0.8; }
+        .footer-links { margin: 15px 0; }
+        .footer-link { color: #fff; text-decoration: none; margin: 0 10px; font-weight: bold; }
+        .footer-link:hover { text-decoration: underline; }
+        .footer form { display: flex; flex-direction: column; align-items: center; max-width: 400px; margin: 0 auto; gap: 10px; }
+        .footer input, .footer textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background-color: rgba(255, 255, 255, 0.8); color: #444; font-size: 1rem; transition: border-color 0.3s; }
+        .footer input:focus, .footer textarea:focus { border-color: #007BFF; outline: none; }
+        .footer button { font-size: 20px; padding: 12px 170px; background-color: #007BFF; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background-color 0.3s, transform 0.3s; }
+        .footer button:hover { background-color: #0056b3; transform: translateY(-4px); }
+        .map-link { color: #fff; text-decoration: none; font-weight: bold; }
+
+        footer{
+            margin-bottom:0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="{% static 'images/imagen_header.png' %}" alt="Header Image" class="header-image">
+        <div class="button-container">
+            <a href="{% url 'lista_ventas' %}" class="button">Ventas</a>
+            <a href="{% url 'alquiler_list' %}" class="button">Rentas</a>
+            <a href="{% url 'terrenos_list' %}" class="button">Terrenos</a>
+            <a href="{% url 'pre_construccion_list' %}" class="button">Pre-Ventas</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Sobre Nosotros</h1>
+    </header>
+
+    <h2>Bienvenidos a casapv.com</h2>
+
+    <h3>Nuestra Misión</h3>
+    <p>En <strong>casapv.com</strong>, nos dedicamos a ofrecerte las mejores propiedades en Puerto Vallarta, Jalisco. Nuestro objetivo es ayudarte a encontrar el hogar de tus sueños, ya sea para vivir, invertir o vacacionar.</p>
+
+    <h3>¿Quiénes Somos?</h3>
+    <p>Fundada en 2015, somos un equipo de profesionales apasionados por el sector inmobiliario y por la belleza de Puerto Vallarta. Con años de experiencia y un profundo conocimiento del mercado local, nos comprometemos a brindarte un servicio excepcional y personalizado.</p>
+
+    <h3>Tipos de Propiedades</h3>
+    <p>En <strong>casapv.com</strong>, ofrecemos una variedad de opciones para satisfacer tus necesidades:</p>
+    <ul>
+        <li>Casas</li>
+        <li>Departamentos</li>
+        <li>Terrenos</li>
+        <li>Pre-Ventas</li>
+    </ul>
+
+    <h3>Nuestros Valores</h3>
+    <ul>
+        <li><strong>Integridad:</strong> La honestidad y la transparencia son la base de nuestra relación con nuestros clientes.</li>
+        <li><strong>Excelencia:</strong> Buscamos superar tus expectativas en cada paso del proceso.</li>
+        <li><strong>Compromiso:</strong> Estamos dedicados a encontrar la propiedad perfecta para ti.</li>
+    </ul>
+
+    <h3>¿Por Qué Elegirnos?</h3>
+    <ul>
+        <li><strong>Experiencia:</strong> Contamos con un equipo altamente calificado en el sector inmobiliario.</li>
+        <li><strong>Red de Contactos:</strong> Trabajamos con los mejores desarrolladores y agentes para ofrecerte una amplia gama de opciones.</li>
+    </ul>
+
+    <h3>Contáctanos</h3>
+    <p>Estamos aquí para ayudarte. Si tienes preguntas o deseas más información sobre nuestras propiedades, no dudes en <a href="#footer">contactarnos</a>.</p>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info-container">
+                <h2>Agente Norma Ruiz:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227797836" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+            </div>
+            <div class="footer-info-container">
+                <h2>Agente Andres Estrada:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227798966" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+                <div class="footer-info">
+                    <p><strong>Dirección:</strong> Calle tijereta 113, Puerto Vallarta, México</p>
+                    <p><strong>Teléfono:</strong> +52 322-779-8966 | +52 322-779-7836  </p>
+                    <p><strong>Horarios:</strong> Lunes a Viernes, 10 AM - 6 PM</p>
+                </div>
+            </div>
+            <div class="footer-form-container">
+                <h4>Envianos un Correo</h4>
+                <form method="post" action="{% url 'enviar_email' %}">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    <input type="text" name="phone" placeholder="Tu teléfono" required>
+                    <textarea name="message" placeholder="Tu mensaje" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <p class="footer-rights">&copy; 2024 www.casapv.com. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="{% url 'privacy_policy' %}" class="footer-link">Política de Privacidad</a> |
+                <a href="{% url 'terms_of_service' %}" class="footer-link">Términos de Servicio</a>
+            </div>
+            <p>
+                <a href="/about_us/" class="map-link">Acerca de Nosotros</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

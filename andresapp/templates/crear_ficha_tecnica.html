@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/estilos_creaciones_y_edicion.css' %}">
+    <title>Crear Ficha Técnica</title>
+</head>
+<body>
+    <h1>CREAR FICHA TÉCNICA DEL INMUEBLE</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Información del agente</h1>
+        <!-- Custom field 1: Logo Agente -->
+        <div class="form-group">
+            <label for="{{ form.logo_agente.id_for_label }}">Logo Agente</label>
+            {{ form.logo_agente }}
+        </div>
+
+        <!-- Custom field 2: Nombre del Agente -->
+        <div class="form-group">
+            <label for="{{ form.nombre_agente.id_for_label }}">Nombre del Agente</label>
+            {{ form.nombre_agente }}
+        </div>
+
+        <!-- Custom field 3: Cargo en la Agencia -->
+        <div class="form-group">
+            <label for="{{ form.cargo_en_la_agencia.id_for_label }}">Cargo en la Agencia</label>
+            {{ form.cargo_en_la_agencia }}
+        </div>
+
+        <!-- Custom field 4: Teléfono del Agente -->
+        <div class="form-group">
+            <label for="{{ form.telefono_agente.id_for_label }}">Teléfono Agente</label>
+            {{ form.telefono_agente }}
+        </div>
+
+        <!-- Custom field 5: Email del Agente -->
+        <div class="form-group">
+            <label for="{{ form.email_agente.id_for_label }}">Email Agente</label>
+            {{ form.email_agente }}
+        </div>
+
+        <!-- Custom field 6: Página Web -->
+        <div class="form-group">
+            <label for="{{ form.pagina_web.id_for_label }}">Página Web</label>
+            {{ form.pagina_web }}
+        </div>
+
+        <!-- Custom field 7: Ciudad y Estado -->
+        <div class="form-group">
+            <label for="{{ form.ciudad_y_estado.id_for_label }}">Ciudad y Estado</label>
+            {{ form.ciudad_y_estado }}
+        </div>
+
+        <h1> Información Ficha Técnica</h1>
+        <!-- Custom field 8: Estado de Conservación -->
+        <div class="form-group">
+            <label for="{{ form.estado_conservacion.id_for_label }}">Estado de Conservación</label>
+            {{ form.estado_conservacion }}
+        </div>
+
+        <!-- Custom field 9: Superficie de Terreno -->
+        <div class="form-group">
+            <label for="{{ form.superficie_terreno.id_for_label }}">Superficie de Terreno (m²)</label>
+            {{ form.superficie_terreno }}
+        </div>
+
+        <!-- Custom field 10: Superficie de Construcción -->
+        <div class="form-group">
+            <label for="{{ form.superficie_construccion.id_for_label }}">Superficie de Construcción (m²)</label>
+            {{ form.superficie_construccion }}
+        </div>
+
+        <!-- Custom field 11: Instalaciones Especiales -->
+        <div class="form-group">
+            <label for="{{ form.instalaciones_especiales.id_for_label }}">Instalaciones Especiales</label>
+            {{ form.instalaciones_especiales }}
+        </div>
+
+        <!-- Custom field 12: Distribución de Materiales -->
+        <div class="form-group">
+            <label for="{{ form.distribucion_materiales.id_for_label }}">Distribución y Materiales de Construcción</label>
+            {{ form.distribucion_materiales }}
+        </div>
+
+        <!-- Custom field 13: Infraestructura de la Zona -->
+        <div class="form-group">
+            <label for="{{ form.infraestructura_zona.id_for_label }}">Infraestructura de la Zona y Urbanización</label>
+            {{ form.infraestructura_zona }}
+        </div>
+
+        <!-- Custom field 14: Antigüedad -->
+        <div class="form-group">
+            <label for="{{ form.antiguedad.id_for_label }}">Antigüedad (años)</label>
+            {{ form.antiguedad }}
+        </div>
+
+        <!-- Custom field 15: Precio de Venta -->
+        <div class="form-group">
+            <label for="{{ form.precio_venta.id_for_label }}">Precio de Venta</label>
+            {{ form.precio_venta }}
+        </div>
+
+        <!-- Custom field 16: Urbanización -->
+        <div class="form-group">
+            <label for="{{ form.urbanizacion.id_for_label }}">Urbanización</label>
+            {{ form.urbanizacion }}
+        </div>
+
+        <!-- Custom field 17: Situación Legal -->
+        <div class="form-group">
+            <label for="{{ form.situacion_legal.id_for_label }}">Situación Legal</label>
+            {{ form.situacion_legal }}
+        </div>
+
+        <!-- Custom field 18: Foto 1 -->
+        <div class="form-group">
+            <label for="{{ form.foto_1.id_for_label }}">Foto 1</label>
+            {{ form.foto_1 }}
+        </div>
+
+        <!-- Custom field 19: Foto 2 -->
+        <div class="form-group">
+            <label for="{{ form.foto_2.id_for_label }}">Foto 2</label>
+            {{ form.foto_2 }}
+        </div>
+
+        <!-- Custom field 20: Foto 3 -->
+        <div class="form-group">
+            <label for="{{ form.foto_3.id_for_label }}">Foto 3</label>
+            {{ form.foto_3 }}
+        </div>
+
+        <!-- Custom field 21: Foto 4 -->
+        <div class="form-group">
+            <label for="{{ form.foto_4.id_for_label }}">Foto 4</label>
+            {{ form.foto_4 }}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Guardar</button>
+        <a href="{% url 'lista_ventas' %}" class="back-link">Volver al inicio</a>
+    </form>
+</body>
+</html>

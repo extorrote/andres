@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/estilos_creaciones_y_edicion.css' %}">
+    <title>Perfilamiento del Prospecto Vendedor y del Inmueble</title>
+    
+</head>
+<body>
+
+<main>
+    <h1>PERFILAMIENTO DEL PROSPECTO VENDEDOR Y DEL INMUEBLE</h1>
+    
+    <form method="post" action="{% url 'crear_ficha_tecnica'  %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="error">
+                <p>There were errors in your form:</p>
+                <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <h2>INFORMACION DEL AGENTE</h2>
+
+            <div class="form-row">
+                <label for="{{ form.logo_agente.id_for_label }}">{{ form.logo_agente.label }}</label>
+                {{ form.logo_agente }}
+            </div>
+            <div class="form-row">
+                <label for="{{ form.nombre_agente.id_for_label }}">{{ form.nombre_agente.label }}</label>
+                {{ form.nombre_agente }}
+            </div>
+            <div class="form-row">
+                <label for="{{ form.cargo_en_la_agencia.id_for_label }}">{{ form.cargo_en_la_agencia.label }}</label>
+                {{ form.cargo_en_la_agencia}}
+            </div>
+            <div class="form-row">
+                <label for="{{ form.telefono_agente.id_for_label }}">{{ form.telefono_agente.label }}</label>
+                {{ form.telefono_agente }}
+            </div>
+            <div class="form-row">
+                <label for="{{ form.email_agente.id_for_label }}">{{ form.email_agente.label }}</label>
+                {{ form.email_agente }}
+            </div>
+
+            <div class="form-row">
+                <label for="{{ form.pagina_web.id_for_label }}">{{ form.pagina_web.label }}</label>
+                {{ form.pagina_web }}
+            </div>
+            <div class="form-row">
+                <label for="{{ form.ciudad_y_eastado.id_for_label }}">{{ form.ciudad_y_estado.label }}</label>
+                {{ form.ciudad_y_estado }}
+            </div>
+
+        <h2>DATOS DEL VENDEDOR</h2>
+        <div class="form-row">
+            <label for="{{ form.nombre_completo.id_for_label }}">{{ form.nombre_completo.label }}</label>
+            {{ form.nombre_completo }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.fecha_nacimiento.id_for_label }}">{{ form.fecha_nacimiento.label }}</label>
+            {{ form.fecha_nacimiento }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.estado_civil.id_for_label }}">{{ form.estado_civil.label }}</label>
+            {{ form.estado_civil }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.domicilio.id_for_label }}">{{ form.domicilio.label }}</label>
+            {{ form.domicilio }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.colonia.id_for_label }}">{{ form.colonia.label }}</label>
+            {{ form.colonia }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.ciudad.id_for_label }}">{{ form.ciudad.label }}</label>
+            {{ form.ciudad }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.codigo_postal.id_for_label }}">{{ form.codigo_postal.label }}</label>
+            {{ form.codigo_postal }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.telefono_contacto.id_for_label }}">{{ form.telefono_contacto.label }}</label>
+            {{ form.telefono_contacto }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.rfc.id_for_label }}">{{ form.rfc.label }}</label>
+            {{ form.rfc }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.curp.id_for_label }}">{{ form.curp.label }}</label>
+            {{ form.curp }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.numero_identificacion_oficial.id_for_label }}">{{ form.numero_identificacion_oficial.label }}</label>
+            {{ form.numero_identificacion_oficial }}
+        </div>
+
+        <h2>DATOS GENERALES DEL INMUEBLE</h2>
+        <div class="form-row">
+            <label for="{{ form.ubicacion.id_for_label }}">{{ form.ubicacion.label }}</label>
+            {{ form.ubicacion }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.calle.id_for_label }}">{{ form.calle.label }}</label>
+            {{ form.calle }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.estado.id_for_label }}">{{ form.estado.label }}</label>
+            {{ form.estado }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.numero_exterior.id_for_label }}">{{ form.numero_exterior.label }}</label>
+            {{ form.numero_exterior }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.tipo_inmueble.id_for_label }}">{{ form.tipo_inmueble.label }}</label>
+            {{ form.tipo_inmueble }}
+        </div>
+
+        <h3>Características:</h3>
+        <div class="grid-container">
+            <div class="grid-item">Plantas:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="num_plantas" id="num_plantas"></div>
+
+            <div class="grid-item">Recámaras:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="num_recamaras" id="num_recamaras"></div>
+
+            <div class="grid-item">Baños:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="num_banos" id="num_banos"></div>
+
+            <div class="grid-item">Estacionamiento:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="estacionamiento" id="estacionamiento"></div>
+
+            <div class="grid-item">Superficie de Terreno:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="superficie_terreno" id="superficie_terreno"></div>
+
+            <div class="grid-item">Superficie de Construcción:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="superficie_construccion" id="superficie_construccion"></div>
+
+            <div class="grid-item">Uso de Suelo:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="uso_suelo" id="uso_suelo"></div>
+
+            <div class="grid-item">Antigüedad:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="antiguedad" id="antiguedad"></div>
+
+            <div class="grid-item">Forma de Adquisición:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="forma_adquisicion" id="forma_adquisicion"></div>
+
+            <div class="grid-item">Grabámenes de Propiedad:</div>
+            <div class="grid-item"><input type="text" class="input-field" name="grabamenes_propiedad" id="grabamenes_propiedad"></div>
+        </div>
+
+        <h3>Equipamiento:</h3>
+        <div class="grid-container">
+            <div class="grid-item">Cocina:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="cocina" id="cocina"></div>
+
+            <div class="grid-item">Sala de Estar:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="sala_estar" id="sala_estar"></div>
+
+            <div class="grid-item">Comedor:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="comedor" id="comedor"></div>
+
+            <div class="grid-item">Estudio:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="estudio" id="estudio"></div>
+
+            <div class="grid-item">Sala de TV:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="sala_tv" id="sala_tv"></div>
+
+            <div class="grid-item">Cuarto de Lavado:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="cuarto_lavado" id="cuarto_lavado"></div>
+
+            <div class="grid-item">Jardín:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="jardin" id="jardin"></div>
+
+            <div class="grid-item">Paneles Solares:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="paneles_solares" id="paneles_solares"></div>
+
+            <div class="grid-item">Aire Acondicionado:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="aire_acondicionado" id="aire_acondicionado"></div>
+
+            <div class="grid-item">Alberca:</div>
+            <div class="grid-item"><input type="text" class="checkbox-input" name="alberca" id="alberca"></div>
+        </div>
+
+        <button type="submit" class="submit-button">Enviar</button>
+        <a href="{% url 'lista_ventas' %}" class="back-link">Volver al inicio</a>
+    </form>
+</main>
+
+</body>
+</html>

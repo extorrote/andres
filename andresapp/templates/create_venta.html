@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/estilos_creaciones_y_edicion.css' %}">
+    <title>Crear Venta</title>
+    
+</head>
+<body>
+    <h1>Crear Venta</h1>
+
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div>
+                <label for="{{ form.tipo_de_propiedad.id_for_label }}">{{ form.tipo_de_propiedad.label }}</label>
+                {{ form.tipo_de_propiedad }}
+                <div class="error">{{ form.tipo_de_propiedad.errors }}</div>
+            </div>
+            
+            <div>
+                <label for="{{ form.colonia.id_for_label }}">{{ form.colonia.label }}</label>
+                {{ form.colonia }}
+                <div class="error">{{ form.colonia.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.precio.id_for_label }}">{{ form.precio.label }}</label>
+                {{ form.precio }}
+                <div class="error">{{ form.precio.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.habitaciones.id_for_label }}">{{ form.habitaciones.label }}</label>
+                {{ form.habitaciones }}
+                <div class="error">{{ form.habitaciones.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.baños.id_for_label }}">{{ form.baños.label }}</label>
+                {{ form.baños }}
+                <div class="error">{{ form.baños.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.sala.id_for_label }}">{{ form.sala.label }}</label>
+                {{ form.sala }}
+                <div class="error">{{ form.sala.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.comedor.id_for_label }}">{{ form.comedor.label }}</label>
+                {{ form.comedor }}
+                <div class="error">{{ form.comedor.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.cocina.id_for_label }}">{{ form.cocina.label }}</label>
+                {{ form.cocina }}
+                <div class="error">{{ form.cocina.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.cuarto_de_servicio.id_for_label }}">{{ form.cuarto_de_servicio.label }}</label>
+                {{ form.cuarto_de_servicio }}
+                <div class="error">{{ form.cuarto_de_servicio.errors }}</div>
+            </div>
+
+            
+            <div>
+                <label for="{{ form.balcon.id_for_label }}">{{ form.balcon.label }}</label>
+                {{ form.balcon }}
+                <div class="error">{{ form.balcon.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.vista_primaria.id_for_label }}">{{ form.vista_primaria.label }}</label>
+                {{ form.vista_primaria }}
+                <div class="error">{{ form.vista_primaria.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.vista_secundaria.id_for_label }}">{{ form.vista_secundaria.label }}</label>
+                {{ form.vista_secundaria }}
+                <div class="error">{{ form.vista_secundaria.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.comodidades_en_areas_comunes.id_for_label }}">{{ form.comodidades_en_areas_comunes.label }}</label>
+                {{ form.comodidades_en_areas_comunes }}
+                <div class="error">{{ form.comodidades_en_areas_comunes.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.jardin.id_for_label }}">{{ form.jardin.label }}</label>
+                {{ form.jardin }}
+                <div class="error">{{ form.jardin.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.piscina.id_for_label }}">{{ form.piscina.label }}</label>
+                {{ form.piscina }}
+                <div class="error">{{ form.piscina.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.numero_de_piso.id_for_label }}">{{ form.numero_de_piso.label }}</label>
+                {{ form.numero_de_piso }}
+                <div class="error">{{ form.numero_de_piso.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.elevador.id_for_label }}">{{ form.elevador.label }}</label>
+                {{ form.elevador }}
+                <div class="error">{{ form.elevador.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.rooftop.id_for_label }}">{{ form.rooftop.label }}</label>
+                {{ form.rooftop }}
+                <div class="error">{{ form.rooftop.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.gym.id_for_label }}">{{ form.gym.label }}</label>
+                {{ form.gym }}
+                <div class="error">{{ form.gym.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.estasionamiento.id_for_label }}">{{ form.estasionamiento.label }}</label>
+                {{ form.estasionamiento }}
+                <div class="error">{{ form.estasionamiento.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.amoblado.id_for_label }}">{{ form.amoblado.label }}</label>
+                {{ form.amoblado }}
+                <div class="error">{{ form.amoblado.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.tipo_tipo_de_estufa.id_for_label }}">{{ form.tipo_tipo_de_estufa.label }}</label>
+                {{ form.tipo_tipo_de_estufa }}
+                <div class="error">{{ form.tipo_tipo_de_estufa.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.aire_acondicionado.id_for_label }}">{{ form.aire_acondicionado.label }}</label>
+                {{ form.aire_acondicionado }}
+                <div class="error">{{ form.aire_acondicionado.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.calentador_de_agua.id_for_label }}">{{ form.calentador_de_agua.label }}</label>
+                {{ form.calentador_de_agua }}
+                <div class="error">{{ form.calentador_de_agua.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.electrodomesticos_y_muebles_en_general.id_for_label }}">{{ form.electrodomesticos_y_muebles_en_general.label }}</label>
+                {{ form.electrodomesticos_y_muebles_en_general }}
+                <div class="error">{{ form.electrodomesticos_y_muebles_en_general.errors }}</div>
+            </div>
+
+
+            <div>
+                <label for="{{ form.pet_friendly.id_for_label }}">{{ form.pet_friendly.label }}</label>
+                {{ form.pet_friendly }}
+                <div class="error">{{ form.pet_friendly.errors }}</div>
+            </div>
+
+            
+
+            
+            <div>
+                <label for="{{ form.condiciones_de_la_propiedad.id_for_label }}">{{ form.condiciones_de_la_propiedad.label }}</label>
+                {{ form.condiciones_de_la_propiedad }}
+                <div class="error">{{ form.condiciones_de_la_propiedad.errors }}</div>
+            </div>
+            <div>
+                <label for="{{ form.paredes.id_for_label }}">{{ form.paredes.label }}</label>
+                {{ form.paredes }}
+                <div class="error">{{ form.paredes.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.tipo_de_calle.id_for_label }}">{{ form.tipo_de_calle.label }}</label>
+                {{ form.tipo_de_calle }}
+                <div class="error">{{ form.tipo_de_calle.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.tipo_de_electricidad.id_for_label }}">{{ form.tipo_de_electricidad.label }}</label>
+                {{ form.tipo_de_electricidad }}
+                <div class="error">{{ form.tipo_de_electricidad.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.agua.id_for_label }}">{{ form.agua.label }}</label>
+                {{ form.agua }}
+                <div class="error">{{ form.agua.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.privada_o_con_escrituras.id_for_label }}">{{ form.privada_o_con_escrituras.label }}</label>
+                {{ form.privada_o_con_escrituras }}
+                <div class="error">{{ form.privada_o_con_escrituras.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.informacion_extra.id_for_label }}">{{ form.informacion_extra.label }}</label>
+                {{ form.informacion_extra }}
+                <div class="error">{{ form.informacion_extra.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.medidas_de_la_propiedad.id_for_label }}">{{ form.medidas_de_la_propiedad.label }}</label>
+                {{ form.medidas_de_la_propiedad }}
+                <div class="error">{{ form.medidas_de_la_propiedad.errors }}</div>
+            </div>
+            <div>
+                <label for="{{ form.imagen1.id_for_label }}">{{ form.imagen1.label }}</label>
+                {{ form.imagen1 }}
+                <div class="error">{{ form.imagen1.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen2.id_for_label }}">{{ form.imagen2.label }}</label>
+                {{ form.imagen2 }}
+                <div class="error">{{ form.imagen2.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen3.id_for_label }}">{{ form.imagen3.label }}</label>
+                {{ form.imagen3 }}
+                <div class="error">{{ form.imagen3.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen4.id_for_label }}">{{ form.imagen4.label }}</label>
+                {{ form.imagen4 }}
+                <div class="error">{{ form.imagen4.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen5.id_for_label }}">{{ form.imagen5.label }}</label>
+                {{ form.imagen5 }}
+                <div class="error">{{ form.imagen5.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen6.id_for_label }}">{{ form.imagen6.label }}</label>
+                {{ form.imagen6 }}
+                <div class="error">{{ form.imagen6.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen7.id_for_label }}">{{ form.imagen7.label }}</label>
+                {{ form.imagen7 }}
+                <div class="error">{{ form.imagen7.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen8.id_for_label }}">{{ form.imagen8.label }}</label>
+                {{ form.imagen8 }}
+                <div class="error">{{ form.imagen8.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen9.id_for_label }}">{{ form.imagen9.label }}</label>
+                {{ form.imagen9 }}
+                <div class="error">{{ form.imagen9.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen10.id_for_label }}">{{ form.imagen10.label }}</label>
+                {{ form.imagen10 }}
+                <div class="error">{{ form.imagen10.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen11.id_for_label }}">{{ form.imagen11.label }}</label>
+                {{ form.imagen11 }}
+                <div class="error">{{ form.imagen11.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen12.id_for_label }}">{{ form.imagen12.label }}</label>
+                {{ form.imagen12 }}
+                <div class="error">{{ form.imagen12.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen13.id_for_label }}">{{ form.imagen13.label }}</label>
+                {{ form.imagen13 }}
+                <div class="error">{{ form.imagen13.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen14.id_for_label }}">{{ form.imagen14.label }}</label>
+                {{ form.imagen14 }}
+                <div class="error">{{ form.imagen14.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen15.id_for_label }}">{{ form.imagen15.label }}</label>
+                {{ form.imagen15 }}
+                <div class="error">{{ form.imagen15.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.imagen16.id_for_label }}">{{ form.imagen16.label }}</label>
+                {{ form.imagen16 }}
+                <div class="error">{{ form.imagen16.errors }}</div>
+            </div>
+
+            
+
+
+
+            <div>
+                <label for="{{ form.pago_de_mantenimiento.id_for_label }}">{{ form.pago_de_mantenimiento.label }}</label>
+                {{ form.pago_de_mantenimiento }}
+                <div class="error">{{ form.pago_de_mantenimiento.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.que_incluye_el_pago_de_mantenimiento.id_for_label }}">{{ form.que_incluye_el_pago_de_mantenimiento.label }}</label>
+                {{ form.que_incluye_el_pago_de_mantenimiento }}
+                <div class="error">{{ form.que_incluye_el_pago_de_mantenimiento.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.direccion_exacta.id_for_label }}">{{ form.direccion_exacta.label }}</label>
+                {{ form.direccion_exacta }}
+                <div class="error">{{ form.direccion_exacta.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.youtube_link.id_for_label }}">{{ form.youtube_link.label }}</label>
+                {{ form.youtube_link }}
+                <div class="error">{{ form.youtube_link.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.link_de_google_maps.id_for_label }}">{{ form.link_de_google_maps.label }}</label>
+                {{ form.link_de_google_maps }}
+                <div class="error">{{ form.link_de_google_maps.errors }}</div>
+            </div>
+
+            <div>
+                <label for="{{ form.agente.id_for_label }}">{{ form.agente.label }}</label>
+                {{ form.agente }}
+                <div class="error">{{ form.agente.errors }}</div>
+            </div>
+
+            <button type="submit">Crear Venta</button>
+            <a href="{% url 'lista_ventas' %}" >Volver al inicio</a>
+        </form>
+
+       
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 60px; /* Increased padding */
+    background:#c88a4e;
+
+
+
+
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px; /* Increased margin */
+    font-size: 3em; /* Significantly larger font size */
+    color: #fff;
+}
+
+form {
+    background: white;
+    padding: 60px; /* Increased padding */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+    max-width: 700px; /* Wider form */
+    margin: auto;
+    background: linear-gradient(135deg, #c88a4e, #5a8f79, #2a9d8f, #e9d8a6);
+
+
+
+}
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+    color:white;
+  }
+  
+
+form p {
+    margin: 20px 0; /* Increased margin for better spacing */
+    font-size: 1.5em; /* Larger font size for form elements */
+}
+
+input, textarea, select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 15px; /* Increased padding */
+    font-size: 1.2em; /* Larger font size */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space between inputs */
+}
+
+button {
+    background-color: #D99F59;
+    color: white;
+    border: none;
+    padding: 20px 25px; /* Increased padding */
+    border-radius: 10px; /* More rounded corners */
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.5em; /* Larger button font size */
+}
+
+button:hover {
+    background-color:  #2a9d8f;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 30px; /* Adjusted padding for smaller screens */
+    }
+
+    form {
+        padding: 40px; /* Adjusted form padding */
+    }
+
+    button {
+        padding: 15px 20px; /* Adjusted button padding */
+        font-size: 1.2em; /* Font size adjustment for smaller screens */
+    }
+
+    input, textarea, select {
+        font-size: 1em; /* Font size adjustment for smaller screens */
+    }
+}
+a{
+    display:flex;
+    margin:auto;
+    
+    
+    
+    text-decoration:none;
+    font-size:20px;
+}

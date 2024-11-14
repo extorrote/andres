@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfilamiento del Prospecto Vendedor</title>
+    <style>
+        * { background-color: white; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+        }
+        .container {
+            width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            height: 178.5px; /* Reduced from 210px */
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px; /* Reduced from 17px */
+        }
+        header img {
+            width: 45%;
+        }
+        .header-text {
+            margin-right: 51px; /* Reduced from 60px */
+        }
+        .header-text p {
+            margin: 2px 0; /* Adjusted margins for header text */
+        }
+        h1, h2 {
+            color: #333;
+            font-family: Verdana, sans-serif;
+        }
+        h1 { font-size: 20px; margin: auto; }
+        h2 { font-size: 16px; margin-top: 10px; /* Reduced from 17px */ }
+        .data-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4.25px; /* Reduced from 5px */
+        }
+        a{
+            text-decoration:none;
+        }
+        a:visited{
+            color:black;
+        }
+        .data-label {
+            flex: 1;
+            font-weight: bold;
+        }
+        .data-value {
+            flex: 2;
+            border: 1px solid #ccc;
+            padding: 4.25px; /* Reduced from 5px */
+            border-radius: 4px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 10px; /* Reduced from 17px */
+        }
+        footer {
+            position: relative;
+            text-align: center;
+            height: 178.5px; /* Reduced from 210px */
+            margin-top:80px;
+
+            font-family: Verdana, sans-serif;
+        }
+        footer img {
+            width:300px;
+            height:170px;
+            margin-top:-84px;
+            
+            
+            
+        }
+        .footer-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            padding: 10px;
+            width: 90%;
+            text-align: center;
+        }
+        .footer-overlay p {
+            margin: 2px 0; /* Adjusted margins for footer text */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        {% for perfilamiento in perfilamientos %}
+        {% if perfilamiento.logo_agente %}
+        
+            <img src="{{ perfilamiento.logo_agente.url }}" alt="foto anegte">  
+        {%endif%}
+        <div class="header-text">
+            <p>{{perfilamiento.nombre_agente}}</p>
+            <p>{{perfilamiento.cargo_en_la_agencia}}</p>
+            <p>Teléfono: {{perfilamiento.telefono_agente}}</p>
+            <p>Email: {{perfilamiento.email_agente}}</p>
+            <p>Página Web: <a style="color:blue;" href="http://{{perfilamiento.pagina_web}}">{{perfilamiento.pagina_web}}</a></p>
+            <p>{{perfilamiento.ciudad_y_estado}}</p>
+        </div>
+    </header>
+
+    <main>
+        <h1>PERFILAMIENTO DEL PROSPECTO VENDEDOR Y DEL INMUEBLE</h1>
+
+        
+        <h2>DATOS DEL VENDEDOR</h2>
+        <div class="grid-container">
+            <div class="data-row">
+                <div class="data-label">Nombre Completo:</div>
+                <div class="data-value">{{ perfilamiento.nombre_completo }}</div>
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">Estado Civil:</div>
+                <div class="data-value">{{ perfilamiento.estado_civil }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Fecha de Nacimiento:</div>
+                <div class="data-value">{{ perfilamiento.fecha_nacimiento }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Teléfono Contacto:</div>
+                <div class="data-value">{{ perfilamiento.telefono_contacto }}</div>
+            </div>
+
+            <div class="data-row">
+                <div class="data-label">RFC:</div>
+                <div class="data-value">{{ perfilamiento.rfc }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">CURP:</div>
+                <div class="data-value">{{ perfilamiento.curp }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Domicilio:</div>
+                <div class="data-value">{{ perfilamiento.domicilio }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Colonia:</div>
+                <div class="data-value">{{ perfilamiento.colonia }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Ciudad:</div>
+                <div class="data-value">{{ perfilamiento.ciudad }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">CP:</div>
+                <div class="data-value">{{ perfilamiento.codigo_postal }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Número de Identificación Oficial:</div>
+                <div class="data-value">{{ perfilamiento.numero_identificacion_oficial }}</div>
+            </div>
+        </div>
+
+        <h2>DATOS GENERALES DEL INMUEBLE</h2>
+        <div class="grid-container">
+            <div class="data-row">
+                <div class="data-label">Ubicación:</div>
+                <div class="data-value">{{ perfilamiento.ubicacion }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Calle:</div>
+                <div class="data-value">{{ perfilamiento.calle }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Estado:</div>
+                <div class="data-value">{{ perfilamiento.estado }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">No. Exterior:</div>
+                <div class="data-value">{{ perfilamiento.numero_exterior }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Tipo de inmueble:</div>
+                <div class="data-value">{{ perfilamiento.tipo_inmueble }}</div>
+            </div>
+        </div>
+
+        <h2>Características</h2>
+        <div class="grid-container">
+            <div class="data-row">
+                <div class="data-label">Plantas:</div>
+                <div class="data-value">{{ perfilamiento.num_plantas }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Recámaras:</div>
+                <div class="data-value">{{ perfilamiento.num_recamaras }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Baños:</div>
+                <div class="data-value">{{ perfilamiento.num_banos }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Estacionamiento:</div>
+                <div class="data-value">{{ perfilamiento.estacionamiento }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Superficie de Terreno:</div>
+                <div class="data-value">{{ perfilamiento.superficie_terreno }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Superficie de Construcción:</div>
+                <div class="data-value">{{ perfilamiento.superficie_construccion }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Uso de Suelo:</div>
+                <div class="data-value">{{ perfilamiento.uso_suelo }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Antigüedad:</div>
+                <div class="data-value">{{ perfilamiento.antiguedad }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Forma de Adquisición:</div>
+                <div class="data-value">{{ perfilamiento.forma_adquisicion }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Grabámenes de Propiedad:</div>
+                <div class="data-value">{{ perfilamiento.grabamenes_propiedad }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Jardín:</div>
+                <div class="data-value">{{ perfilamiento.jardin }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Paneles Solares:</div>
+                <div class="data-value">{{ perfilamiento.paneles_solares }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label"><a href="{% url 'editar_perfilamiento' perfilamiento.pk %}">Aire Acondicionado:</a></div>
+                <div class="data-value">{{ perfilamiento.aire_acondicionado }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Alberca:</div>
+                <div class="data-value">{{ perfilamiento.alberca }}</div>
+            </div>
+        </div>
+       
+    </main>
+
+    <footer>
+        <img src="/static/images/logo_agente.png" alt="Logo" >
+        <div class="footer-overlay">
+            <p>{{perfilamiento.nombre_agente}}</p>
+            <p>{{perfilamiento.cargo_en_la_agencia}}</p>
+            <p>Teléfono: {{perfilamiento.telefono_agente}}</p>
+            <p>Email: {{perfilamiento.email_agente}}</p>
+            <p>Página Web: <a style="color:blue;" href="http://{{perfilamiento.pagina_web}}">{{perfilamiento.pagina_web}}</a></p>
+            <p>{{perfilamiento.ciudad_y_estado}}</p>
+
+            {% endfor %}
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta Tags for SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Compra, venta, alquiler y preventas de propiedades en Puerto Vallarta. Ofrecemos terrenos, casas, departamentos y más. Encuentra tu hogar ideal en el paraíso.">
+    <meta name="keywords" content="casas en venta, terrenos en Puerto Vallarta, departamentos en renta, preventas en Puerto Vallarta, compra venta de propiedades, bienes raíces en Puerto Vallarta, rentas Puerto Vallarta">
+    <meta name="author" content="CasaPV">
+    <meta name="theme-color" content="#D99F59">
+    
+    <!-- OG Tags for Social Media -->
+    <meta property="og:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta property="og:description" content="Explora una amplia variedad de terrenos, casas, departamentos y más en Puerto Vallarta. Encuentra tu propiedad ideal en el corazón de la Riviera Nayarit.">
+    <meta name="OG:IMAGE" content="images/og_image.pnj">
+    <meta property="og:url" content="https://www.casapv.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CasaPV">
+    <meta name="twitter:title" content="CasaPV - Venta, Renta y Preventas de Propiedades en Puerto Vallarta">
+    <meta name="twitter:description" content="Compra, venta, renta y preventas de propiedades en Puerto Vallarta. Encuentra tu hogar ideal en un destino único.">
+    <meta name="twitter:image" content="{% static 'images/www.casapv.com.png' %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+
+    
+    <title>Lista de Propiedades</title>
+    <link rel="stylesheet" href="{% static '/css/estilos_lista_ventas.css' %}">
+    <link rel="stylesheet" href="{% static '/css/fuentes.css' %}">
+    <style>
+        /* Your existing styles... */
+        .search-form {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .search-form h3 {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .search-form input,
+        .search-form select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 0 1 calc(45% - 10px);
+        }
+
+        .search-form button {
+            padding: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-basis: 100%;
+        }
+
+        .search-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media query for small screens */
+        @media (max-width: 600px) {
+            .search-form {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .search-form input,
+            .search-form select {
+                width: 80%;
+                margin: 5px auto;
+            }
+
+            .search-form button {
+                flex-basis: auto;
+            }
+        }
+
+        /* Estilo del menú desplegable */
+        .menu-desplegable-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .menu-desplegable-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius:10px;
+            margin-top:20px;
+        }
+
+        /* Estilo de los enlaces en el menú desplegable */
+        .menu_desplegable_items {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius:10px;
+            border-bottom: 2px solid #D99F59;
+            text-align:center;
+        }
+
+        /* Efecto hover para los elementos del menú */
+        .menu_desplegable_items:hover {
+            background-color: #ddd;
+        }
+
+        /* Mostrar el menú cuando se pasa el mouse por encima del contenedor */
+        .menu-desplegable-container:hover .menu-desplegable-content {
+            position: relative;
+            display: block;
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/imagen_header.png' %}" alt="Header Image" class="header-image">
+        <div class="button-container">
+            {% if user.username == 'norma' or user.username == 'andres' or user.username == 'kiki'%}
+            <div class="menu-desplegable-container">
+                <a href="javascript:void(0)" class="button desaparecer">Subir Propiedades</a>
+                <div class="menu-desplegable-content">
+                    <a href="{% url 'create_venta' %}" class="menu_desplegable_items">Crear Venta</a>
+                    <a href="{% url 'create_alquiler' %}" class="menu_desplegable_items">Crear Renta</a>
+                    <a href="{% url 'create_terreno' %}" class="menu_desplegable_items">Crear Terreno</a>
+                    <a href="{% url 'create_pre_construccion' %}" class="menu_desplegable_items">Crear Pre-Construcción</a>
+                    <a href="{% url 'logout' %}" class="menu_desplegable_items">Cerrar Sesión</a>
+                </div>
+            </div>
+            <div class="menu-desplegable-container">
+                <a href="javascript:void(0)" class="button desaparecer">Propiedades</a>
+                <div class="menu-desplegable-content">
+                    <a href="{% url 'lista_ventas' %}" class="menu_desplegable_items">Ventas</a>
+                    <a href="{% url 'alquiler_list' %}" class="menu_desplegable_items">Rentas</a>
+                    <a href="{% url 'terrenos_list' %}" class="menu_desplegable_items">Terrenos</a>
+                    <a href="{% url 'pre_construccion_list' %}" class="menu_desplegable_items">Pre-Ventas</a>
+                </div>
+            </div>
+            <div>
+                <div class="menu-desplegable-container">
+                    <a href="javascript:void(0)" class="button desaparecer">Documentos</a>
+                    <div class="menu-desplegable-content">
+                        <a href="{% url 'crear_perfilamiento' %}" class="menu_desplegable_items">Crear Perfilamiento</a>
+                        <a href="{% url 'crear_ficha_tecnica' %}" class="menu_desplegable_items">Crear Ficha Tecnica</a>
+                        <a href="{% url 'crear_levantamiento' %}" class="menu_desplegable_items">Crear Levantamiento</a>
+                        <a href="{% url 'perfilamiento_list' %}" class="menu_desplegable_items">Lista Perfilamientos</a>
+                        <a href="{% url 'lista_fichas_tecnicas' %}" class="menu_desplegable_items">Lista Fichas Tecnicas</a>
+                        <a href="{% url 'lista_levantamientos' %}" class="menu_desplegable_items">Lista Levantamientos</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            {% else %}
+            <a href="{% url 'lista_ventas' %}" class="button">Ventas</a>
+            <a href="{% url 'alquiler_list' %}" class="button">Rentas</a>
+            <a href="{% url 'terrenos_list' %}" class="button">Terrenos</a>
+            <a href="{% url 'pre_construccion_list' %}" class="button">Pre-Ventas</a>
+            <a href="{% url 'login' %}" class="button">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!-- Updated Search Form -->
+    <form class="search-form" id="search-form">
+        <h3>Buscar Terrenos</h3>
+        <input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicación" class="search-input" oninput="searchProperties()">
+        <input type="text" id="precio" name="precio" placeholder="Precio (Ej: 1000000)" class="search-input" oninput="searchProperties()">
+    </form>
+
+    <h1>Terrenos en Venta</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="property-grid">
+        {% for terreno in terrenos %}
+        <div class="property-card" data-colonia="{{ terreno.ubicacion }}" data-precio="{{ terreno.precio }}">
+            <div class="image-container">
+                <img src="{% if terreno.imagen1 %}{{ terreno.imagen1.url }}{% else %}{{ default_image_url }}{% endif %}" 
+                    alt="{{ terreno.ubicacion }}" class="property-image" onclick="openModal('{% if terreno.imagen1 %}{{ terreno.imagen1.url }}{% else %}{{ default_image_url }}{% endif %}')">
+                <div class="price-overlay"><strong>$ {{ terreno.precio }}</strong></div>
+            </div>
+            <div class="property-details">
+                <h2 class="terreno-title">{{ terreno.ubicacion }}</h2>
+                <div class="info-container">
+                    <div class="info-card">
+                        <p class="property-info">Escrituras: <strong>{{ terreno.propiedad_privada_o_con_escrituras }}</strong></p>
+                    </div>
+                    <div class="info-card">
+                        <p class="property-info">Medidas: <strong>{{ terreno.medidas }}</strong></p>
+                    </div>
+                </div>
+                <a href="{% url 'terrenos_detail' terreno.pk %}" class="detail-link">Ver más Detalles</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info-container">
+                <h2>Agente Norma Ruiz:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227797836" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+            </div>
+            <div class="footer-info-container">
+                <h2>Agente Andres Estrada:</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/+523227798966" class="social-icon whatsapp"></a>
+                    <a href="https://www.instagram.com/youragency" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://www.facebook.com/youragency" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://www.youtube.com/@casapv" target="_blank" class="social-icon youtube"></a>
+                </div>
+                <hr>
+                <div class="footer-info">
+                    <p><strong>Dirección:</strong> Calle tijereta 113, Puerto Vallarta, México</p>
+                    <p><strong>Teléfono:</strong> +52 322-779-8966 | +52 322-779-7836  </p>
+                    <p><strong>Horarios:</strong> Lunes a Viernes, 10 AM - 6 PM</p>
+                </div>
+            </div>
+            <div class="footer-form-container">
+                <h4>Envianos un Correo</h4>
+                <form method="post" action="{% url 'enviar_email' %}">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    <input type="text" name="phone" placeholder="Tu teléfono" required>
+                    <textarea name="message" placeholder="Tu mensaje" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <p class="footer-rights">&copy; 2024 www.casapv.com. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="{% url 'privacy_policy' %}" class="footer-link">Política de Privacidad</a> |
+                <a href="{% url 'terms_of_service' %}" class="footer-link">Términos de Servicio</a>
+            </div>
+            <p>
+                <a href="/about_us/" class="map-link">Acerca de Nosotros</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Filtering function for search form
+        function searchProperties() {
+            const ubicacion = document.getElementById('ubicacion').value.toLowerCase();
+            const precio = document.getElementById('precio').value;
+
+            const properties = document.querySelectorAll('.property-card');
+            properties.forEach(property => {
+                const propertyUbicacion = property.getAttribute('data-colonia').toLowerCase();
+                const propertyPrecio = property.getAttribute('data-precio');
+
+                let matches = true;
+
+                // Match ubicacion
+                if (ubicacion && !propertyUbicacion.includes(ubicacion)) {
+                    matches = false;
+                }
+                
+                // Match precio
+                if (precio && !propertyPrecio.includes(precio)) {
+                    matches = false;
+                }
+
+                if (matches) {
+                    property.style.display = '';
+                } else {
+                    property.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal functions
+        function openModal(imageSrc) {
+            const modal = document.getElementById("myModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImage.src = imageSrc;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+
+    
+    <!-- ANIMACIONES DE LOS CONTAINERS DE LAS PROPIEDADES-->
+    <script>
+        // JavaScript for adding the visibility class to cards on scroll
+        const propertyCards = document.querySelectorAll('.property-card');
+
+        // Function to check if an element is in the viewport
+        function checkVisibility() {
+            propertyCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    if (card.classList.contains('property-card')) {
+                        const offsetTop = rect.top;
+                        // Apply different animation classes based on position in viewport
+                        if (offsetTop > 0) {
+                            card.classList.add('visible-left'); // Slide in from the left
+                        } else if (offsetTop < window.innerHeight / 2) {
+                            card.classList.add('visible-right'); // Slide in from the right
+                        } else {
+                            card.classList.add('visible-bottom'); // Slide up from the bottom
+                        }
+                    }
+                }
+            });
+        }
+
+        // Listen for scroll event to trigger animations
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Initial check to see if elements are already in view
+        checkVisibility();
+    </script>
+</body>
+</html>
